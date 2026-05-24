@@ -4,21 +4,21 @@
 
 ```powershell
 # 列出已有 skill 工具（健康检查）
-python .ai/skills/teascript-helper/scripts/selftest.py
-python .ai/skills/smbx-38a/scripts/selftest.py
+python .tools/skills/teascript-helper/scripts/selftest.py
+python .tools/skills/smbx-38a/scripts/selftest.py
 ```
 
 ## 1. 写一段新脚本（基于模板）
 
 ```powershell
 # 复制模板（你自己开发的脚本建议放在 .cache/ 或 Scripts/ 自己的子目录）
-Copy-Item .ai/skills/teascript-helper/templates/event_script.tea ".cache/MyScript.tea"
+Copy-Item .tools/skills/teascript-helper/templates/event_script.tea ".cache/MyScript.tea"
 
 # 用普通编辑器或 IDE 修改 .cache/MyScript.tea
 # ...
 
 # lint
-python .ai/skills/teascript-helper/scripts/teascript_lint.py .cache/MyScript.tea
+python .tools/skills/teascript-helper/scripts/teascript_lint.py .cache/MyScript.tea
 ```
 
 输出示例：
@@ -30,7 +30,7 @@ python .ai/skills/teascript-helper/scripts/teascript_lint.py .cache/MyScript.tea
 ## 2. 嵌入到关卡
 
 ```powershell
-python .ai/skills/teascript-helper/scripts/teascript_inject.py `
+python .tools/skills/teascript-helper/scripts/teascript_inject.py `
     Scenes/Entries/TP.lvl `
     --tea .cache/MyScript.tea `
     --name "MyScript" `
@@ -41,7 +41,7 @@ python .ai/skills/teascript-helper/scripts/teascript_inject.py `
 
 ```powershell
 # 创建新事件 OnFoo，自动启动（autostart=1 = Level Start 时触发），运行 MyScript
-python .ai/skills/teascript-helper/scripts/teascript_event.py `
+python .tools/skills/teascript-helper/scripts/teascript_event.py `
     .cache/TP.test.lvl `
     --event "OnFoo" --script "MyScript" --autostart 1 `
     -o .cache/TP.test.lvl
@@ -54,7 +54,7 @@ python .ai/skills/teascript-helper/scripts/teascript_event.py `
 ## 4. 一键回归测试
 
 ```powershell
-python .ai/skills/teascript-helper/scripts/teascript_test.py `
+python .tools/skills/teascript-helper/scripts/teascript_test.py `
     --lvl Scenes/Entries/TP.lvl `
     --tea .cache/MyScript.tea `
     --name "MyScript" `
@@ -77,24 +77,24 @@ python .ai/skills/teascript-helper/scripts/teascript_test.py `
 
 ```powershell
 # 当前有没有跑 SMBX？
-python .ai/skills/smbx-38a/scripts/session.py status
-python .ai/skills/smbx-38a/scripts/session.py list-procs
+python .tools/skills/smbx-38a/scripts/session.py status
+python .tools/skills/smbx-38a/scripts/session.py list-procs
 
 # 自动找 smbx.exe（看缓存 / 看运行中进程 / 扫常见路径）
-python .ai/skills/smbx-38a/scripts/session.py locate
+python .tools/skills/smbx-38a/scripts/session.py locate
 
 # 启动 editor（用于人工编辑）
-python .ai/skills/smbx-38a/scripts/session.py open-editor `
+python .tools/skills/smbx-38a/scripts/session.py open-editor `
     --editor "C:/SMBX38A/editor.exe" --lvl Scenes/Entries/TP.lvl
 
 # 一键测试（不与 teascript_test.py 联动也行）
-python .ai/skills/smbx-38a/scripts/session.py run `
+python .tools/skills/smbx-38a/scripts/session.py run `
     --lvl .cache/TP.test.lvl `
     --trigger "OnFoo" --state `
     --screenshot ".cache/snap.png"
 
 # 收尾
-python .ai/skills/smbx-38a/scripts/session.py stop
+python .tools/skills/smbx-38a/scripts/session.py stop
 ```
 
 ## 6. 找不到 smbx.exe / editor.exe 时

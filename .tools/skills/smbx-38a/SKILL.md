@@ -46,7 +46,7 @@ license: project-internal
 ## 目录结构
 
 ```
-.ai/skills/smbx-38a/
+.tools/skills/smbx-38a/
 ├── SKILL.md                       # 本文件（入口）
 ├── README.md                      # 概览与快速上手
 ├── reference/                     # 给 AI 的速查
@@ -76,49 +76,49 @@ license: project-internal
 
 **A. 看一关有什么**
 ```bash
-python .ai/skills/smbx-38a/scripts/lvl_parse.py "<file.lvl>" --summary
-python .ai/skills/smbx-38a/scripts/lvl_query.py "<file.lvl>" --kind N --filter id=283
+python .tools/skills/smbx-38a/scripts/lvl_parse.py "<file.lvl>" --summary
+python .tools/skills/smbx-38a/scripts/lvl_query.py "<file.lvl>" --kind N --filter id=283
 ```
 
 **B. 改脚本**
 ```bash
 # 1) 把所有嵌入脚本导出到 .tea 文件
-python .ai/skills/smbx-38a/scripts/lvl_scripts.py extract "<file.lvl>" -o "<dir>"
+python .tools/skills/smbx-38a/scripts/lvl_scripts.py extract "<file.lvl>" -o "<dir>"
 # 2) 编辑导出的 .tea 文件（AI 直接 read/replace_in_file 即可）
 # 3) 回写
-python .ai/skills/smbx-38a/scripts/lvl_scripts.py inject "<file.lvl>" -i "<dir>" -o "<file.modified.lvl>"
+python .tools/skills/smbx-38a/scripts/lvl_scripts.py inject "<file.lvl>" -i "<dir>" -o "<file.modified.lvl>"
 ```
 
 **C. 设计地图（增/删/改 NPC、Block、事件）**
 ```bash
 # 例：在指定坐标加一个 NPC id=1 (Goomba)
-python .ai/skills/smbx-38a/scripts/lvl_edit.py "<file.lvl>" \
+python .tools/skills/smbx-38a/scripts/lvl_edit.py "<file.lvl>" \
   --add N --layer Default --id 1 --x 100 --y -200 -o "<file.modified.lvl>"
 ```
 
 **D. 运行时验证（需先用 SMBX 测试模式启动关卡）**
 ```bash
 # —— 推荐方式：高层会话（自动定位 smbx.exe / 自动等待 IPC / 触发 / 截图 / 让用户 review）
-python .ai/skills/smbx-38a/scripts/session.py run \
+python .tools/skills/smbx-38a/scripts/session.py run \
   --lvl "<file.lvl>" --trigger "MyEvent" --state \
   --screenshot ".cache/snap.png"
 # 没有 --smbx？工具会自动从已运行进程或常见路径找；找不到会提示用户。
 
 # —— 低层方式：手动控制每个步骤
-python .ai/skills/smbx-38a/scripts/engine_control.py launch \
+python .tools/skills/smbx-38a/scripts/engine_control.py launch \
   --smbx "C:/Path/To/smbx.exe" --lvl "<file.lvl>"
 
-python .ai/skills/smbx-38a/scripts/engine_control.py trigger --event "MyEvent"
-python .ai/skills/smbx-38a/scripts/engine_control.py state --object-count
+python .tools/skills/smbx-38a/scripts/engine_control.py trigger --event "MyEvent"
+python .tools/skills/smbx-38a/scripts/engine_control.py state --object-count
 
 # 重载关卡（修改文件后用）
-python .ai/skills/smbx-38a/scripts/engine_control.py reload --lvl "<file.lvl>"
+python .tools/skills/smbx-38a/scripts/engine_control.py reload --lvl "<file.lvl>"
 
 # 截图自检
-python .ai/skills/smbx-38a/scripts/screenshot.py --window "smbx" -o "verify.png"
+python .tools/skills/smbx-38a/scripts/screenshot.py --window "smbx" -o "verify.png"
 
 # 打开 Editor（人工编辑用）
-python .ai/skills/smbx-38a/scripts/session.py open-editor --lvl "<file.lvl>"
+python .tools/skills/smbx-38a/scripts/session.py open-editor --lvl "<file.lvl>"
 ```
 
 ## 行动准则（给 AI 的硬约束）
@@ -203,17 +203,17 @@ loop
 
 ```bash
 # 改条目用 lvl_edit
-python .ai/skills/smbx-38a/scripts/lvl_edit.py "<lvl>" -o "<out.lvl>" \
+python .tools/skills/smbx-38a/scripts/lvl_edit.py "<lvl>" -o "<out.lvl>" \
   --add N --layer Default --id 1 --x 100 --y -120
 
 # 改脚本用 extract/inject（绝不要手写 S|...|<base64>）
-python .ai/skills/smbx-38a/scripts/lvl_scripts.py extract "<lvl>" -o ".cache/scripts"
+python .tools/skills/smbx-38a/scripts/lvl_scripts.py extract "<lvl>" -o ".cache/scripts"
 # 改 .cache/scripts/<name>.tea
-python .ai/skills/smbx-38a/scripts/lvl_scripts.py inject "<lvl>" -i ".cache/scripts" -o "<out.lvl>"
+python .tools/skills/smbx-38a/scripts/lvl_scripts.py inject "<lvl>" -i ".cache/scripts" -o "<out.lvl>"
 
 # ⭐ 改完必跑两层校验
-python .ai/skills/smbx-38a/scripts/lvl_validate.py "<out.lvl>"
-python .ai/skills/smbx-38a/scripts/lvl_var_check.py "<out.lvl>"
+python .tools/skills/smbx-38a/scripts/lvl_validate.py "<out.lvl>"
+python .tools/skills/smbx-38a/scripts/lvl_var_check.py "<out.lvl>"
 # 若有 errors，根据 [Lxxx] 规则码对照 reference/lvl-format.md 修复
 # lvl_var_check 报缺失变量时可用 --fix 自动补 V 行
 ```

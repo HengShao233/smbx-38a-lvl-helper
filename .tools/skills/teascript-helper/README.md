@@ -20,5 +20,5 @@
 
 ## 与 `smbx-38a` 协作
 
-本 skill 直接复用同仓库 `.ai/skills/smbx-38a/scripts/` 下的 `lvlfile.py`、`engine_control.py`、`screenshot.py`。
+本 skill 直接复用同仓库 `.tools/skills/smbx-38a/scripts/` 下的 `lvlfile.py`、`engine_control.py`、`screenshot.py`。
 所有 `.tea ↔ .lvl` 的双向流动都走 `lvlfile.SMBXFile`，保证 round-trip 无损。

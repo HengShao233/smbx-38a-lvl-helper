@@ -52,7 +52,7 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SKILL_DIR = os.path.join(os.path.dirname(HERE), '.ai', 'skills', 'smbx-38a', 'scripts')
+SKILL_DIR = os.path.join(os.path.dirname(HERE), '.tools', 'skills', 'smbx-38a', 'scripts')
 sys.path.insert(0, SKILL_DIR)
 
 from lvl_builder import LVLBuilder

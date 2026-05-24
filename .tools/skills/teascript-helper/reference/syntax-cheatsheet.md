@@ -23,7 +23,7 @@ TeaScript 是 5438A38A 为 SMBX 38A 开发的 **VB6 风格脚本方言**。
 | **Dim Variable** | `dim x as type [= value]` | 直接写名字 | `x = ...` | 当前 script |
 
 > ⚠ **每次脚本里出现 `v(myFlag)` 之前，必须确认 lvl 中已有 `V|<encoded>|0|0` 行**。
-> 用 `python .ai/skills/smbx-38a/scripts/lvl_var_check.py <lvl>` 一键验证，
+> 用 `python .tools/skills/smbx-38a/scripts/lvl_var_check.py <lvl>` 一键验证，
 > 加 `--fix` 会自动补缺失的 V 行。
 
 字符串拼接在 message/TXTCreate 里要用 `&v(name)` / `&gv(name)` / `$val(name)` / `$gvl(name)` 这种特殊前缀。
@@ -203,7 +203,7 @@ BGO(idx).field                      ' 背景对象
     ```
     R|<urlencoded_arr1>|<urlencoded_arr2>|...
     ```
-    一行声明所有数组，每段一个名字。如果用 `V|name|0|1` 假装数组，引擎会报 `undeclared variable`。**新建关卡用 `LVLBuilder.add_array('echoX','echoY')`**（已封装，自动生成 R 行）。详见 `.ai/skills/smbx-38a/reference/lvl-format.md` 踩坑表项 21。
+    一行声明所有数组，每段一个名字。如果用 `V|name|0|1` 假装数组，引擎会报 `undeclared variable`。**新建关卡用 `LVLBuilder.add_array('echoX','echoY')`**（已封装，自动生成 R 行）。详见 `.tools/skills/smbx-38a/reference/lvl-format.md` 踩坑表项 21。
 15. **❌ 38A 没有"每帧自动事件"**。`autostart=1` 仅触发**一次**（在 Level Start 那一帧）。每帧逻辑必须用 `do ... call sleep(1) ... loop` 范式实现：
     ```teascript
     ' 标准每帧范式

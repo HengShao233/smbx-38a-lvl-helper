@@ -31,7 +31,7 @@ license: project-internal
 ## 目录结构
 
 ```
-.ai/skills/teascript-helper/
+.tools/skills/teascript-helper/
 ├── SKILL.md                       # 入口（本文件）
 ├── README.md
 ├── reference/
@@ -63,23 +63,23 @@ license: project-internal
 2. 用普通 `read_file/replace_in_file` 编辑。
 3. lint：
    ```bash
-   python .ai/skills/teascript-helper/scripts/teascript_lint.py path/to/my.tea
+   python .tools/skills/teascript-helper/scripts/teascript_lint.py path/to/my.tea
    ```
 4. （可选）格式化：
    ```bash
-   python .ai/skills/teascript-helper/scripts/teascript_format.py path/to/my.tea -o path/to/my.tea
+   python .tools/skills/teascript-helper/scripts/teascript_format.py path/to/my.tea -o path/to/my.tea
    ```
 
 ### B. 嵌入 lvl
 
 ```bash
 # 直接添加为 lvl 的 S 行（UTF-8 嵌入脚本）
-python .ai/skills/teascript-helper/scripts/teascript_inject.py \
+python .tools/skills/teascript-helper/scripts/teascript_inject.py \
     path/to/level.lvl --tea path/to/my.tea --name "MyScript" \
     -o path/to/level.modified.lvl
 
 # 把脚本绑定到一个事件（创建事件并把 ene/scriptname 指向 MyScript）
-python .ai/skills/teascript-helper/scripts/teascript_event.py \
+python .tools/skills/teascript-helper/scripts/teascript_event.py \
     path/to/level.modified.lvl --event "OnMyTrigger" --script "MyScript" \
     --autostart 1 -o path/to/level.modified.lvl
 ```
@@ -87,7 +87,7 @@ python .ai/skills/teascript-helper/scripts/teascript_event.py \
 ### C. 一键回归
 
 ```bash
-python .ai/skills/teascript-helper/scripts/teascript_test.py \
+python .tools/skills/teascript-helper/scripts/teascript_test.py \
     --lvl path/to/level.lvl \
     --tea path/to/my.tea \
     --name "MyScript" \
