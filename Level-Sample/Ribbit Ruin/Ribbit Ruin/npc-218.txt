@@ -1,0 +1,7 @@
+gfxwidth=88
+gfxheight=104
+frames=1
+framestyle=1
+width=80
+height=96
+scripts=wartdeath

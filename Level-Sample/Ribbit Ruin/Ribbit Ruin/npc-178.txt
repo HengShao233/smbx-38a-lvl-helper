@@ -1,0 +1,5 @@
+gfxwidth=32
+gfxheight=22
+frames=1
+nonpccollision=1
+scripts=bubble

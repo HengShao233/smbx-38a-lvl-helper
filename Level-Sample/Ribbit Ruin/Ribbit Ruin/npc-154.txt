@@ -1,0 +1,6 @@
+playerblock=0
+npcblock=0
+npcblock1=0
+npcblocktop=0
+noyoshi=1
+scripts=##bubble generator

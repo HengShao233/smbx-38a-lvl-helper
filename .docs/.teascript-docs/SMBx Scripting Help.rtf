@@ -1,0 +1,989 @@
+{\rtf1\ansi\ansicpg936\deff0\nouicompat\deflang2052\deflangfe2052{\fonttbl{\f0\fswiss\fcharset0 Calibri;}{\f1\fnil\fcharset0 Calibri;}{\f2\fnil\fcharset134 \'cb\'ce\'cc\'e5;}}
+{\colortbl ;\red0\green0\blue0;\red128\green0\blue128;\red0\green112\blue192;\red0\green176\blue80;\red165\green165\blue165;\red204\green204\blue204;\red255\green0\blue0;\red155\green0\blue211;\red75\green172\blue198;\red255\green192\blue0;}
+{\*\generator Riched20 6.3.9600}{\info{\horzdoc}{\*\lchars ([\'7b\'a1\'a4\'a1\'ae\'a1\'b0\'a1\'b4\'a1\'b6\'a1\'b8\'a1\'ba\'a1\'be\'a1\'b2\'a1\'bc\'a3\'a8\'a3\'ae\'a3\'db\'a3\'fb\'a1\'ea\'a3\'a4}{\*\fchars !),.:;?]\'7d\'a1\'a7\'a1\'a4\'a1\'a6\'a1\'a5\'a8D\'a1\'ac\'a1\'af\'a1\'b1\'a1\'ad\'a1\'c3\'a1\'a2\'a1\'a3\'a1\'a8\'a1\'a9\'a1\'b5\'a1\'b7\'a1\'b9\'a1\'bb\'a1\'bf\'a1\'b3\'a1\'bd\'a3\'a1\'a3\'a2\'a3\'a7\'a3\'a9\'a3\'ac\'a3\'ae\'a3\'ba\'a3\'bb\'a3\'bf\'a3\'dd\'a3\'e0\'a3\'fc\'a3\'fd\'a1\'ab\'a1\'e9}}
+\viewkind4\uc1 
+\pard\widctlpar\qc\kerning2\b\f0\fs36 Super Mario Bros.X Scripting Help\par
+Version 1.4.4\par
+
+\pard\widctlpar\b0\fs22\par
+\b Index\par
+
+\pard\widctlpar\sl276\slmult1\b0 1.About the Script System\par
+
+\pard\widctlpar\fi720 1.a a Brief Introduction\par
+
+\pard\widctlpar 2.Variables\par
+
+\pard\widctlpar\fi720 2.a Definition\par
+2.b Global Variables and Local Variables\par
+2.c Built-in Variables\par
+
+\pard\widctlpar 3.Expressions\par
+
+\pard\widctlpar\fi720 3.a Using Mathematical Expressions\par
+3.b Using Logical Expressions\par
+3.c Expressions in Event System\tab\par
+
+\pard\widctlpar 4.Control Flow\par
+
+\pard\widctlpar\fi720 4.a If-Then-Else Statement\par
+4.b Select Case Statement\par
+4.c For-Next Statement\par
+4.d Do-Loop Statement\par
+4.e With Statement\par
+4.f Goto Statement\par
+
+\pard\widctlpar 5.Functions and Procedures\par
+
+\pard\widctlpar\fi720 5.a System Procedures\par
+5.b System Functions\par
+5.c Custom Functions and Procedures\par
+
+\pard\widctlpar 6.Errors\par
+
+\pard\widctlpar\fi720 6.a Errors in Scripts\par
+6.b Error Codes\par
+
+\pard\widctlpar\par
+Appendix 1.Game Variable List\par
+\par
+\par
+\b\fs32 1.About the Script System\b0\fs22\par
+\b\fs28 1.a\par
+
+\pard\widctlpar\li840\b0\fs22 There is a script system built into the program.It is fully  implemented by VB codes, and its grammar is similar to VB.I named it Tea Script.\par
+\par
+Scintilla is used in the script editor to provide the coloring function,so if SciLexer.dll is lost, you will not be able to write scripts in the level editor.However, if this happens, any script that already exists will still run without any problems.\par
+\par
+\f1 The script system enables you to manipulate nearly every object and variable in the game.You can make more advanced custom NPCs, blocks and even character states with this.\par
+\par
+In common case,you can run scripts you have written in the following 3 ways.\par
+1.'Script' panel in events.\par
+2.'Script' panel in liquids.\par
+3.Directly run scripts in the built-in events of objects. Some special parameters are passed to the script.\par
+\par
+\trowd\trgaph10\trleft816\trrh225\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1\qc\lang1033 Event\cell Object\cell Sysval(param1)\cell Sysval(param2)\cell Sysval(param3)\cell\row\trowd\trgaph10\trleft816\trrh810\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Death\cell Block\cell ID of the source object that caused the destruction\cell Destruction style i.e. how the object destroyed the block\cell ID of the block that is destroyed\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Hit\cell Block\cell ID of the source NPC or Player\cell ID of the block that got hit\cell A positive number means the block is hit by a player and a negative one for an NPC, and the absolute value is the hit style\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 No More Objects In Layer\cell Block\cell ID of the source object \cell Destruction style\cell 0\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 On Screen\cell Block\cell ID of the block\cell 0\cell 0\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Death\cell NPC\cell ID of the NPC\cell ID of the player\cell 0\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Active\cell NPC\cell ID of the NPC\cell 0\cell 0/1(when a generator spawns an NPC)\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Talk\cell NPC\cell ID of the NPC\cell ID of the player\cell 0\cell\row\trowd\trgaph10\trleft816\trrh255\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Grab\cell NPC\cell ID of the NPC\cell ID of the player\cell 0/1(when grab from the top)\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 No More Objects In Layer\cell NPC\cell ID of the NPC\cell 0\cell 0\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Next Frame\cell NPC\cell ID of the NPC\cell 0\cell 0\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Touch\cell NPC\cell ID of the NPC\cell ID of the player\cell 0/1/2/3/4 for no/upper/lower/left/right side is touched\cell\row\trowd\trgaph10\trleft816\trbrdrl\brdrs\brdrw10 \trbrdrt\brdrs\brdrw10 \trbrdrr\brdrs\brdrw10 \trbrdrb\brdrs\brdrw10 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx1938\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx3150\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx5031\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx6882\clbrdrl\brdrw10\brdrs\clbrdrt\brdrw10\brdrs\clbrdrr\brdrw10\brdrs\clbrdrb\brdrw10\brdrs \cellx8748 
+\pard\intbl\keep\keepn\widctlpar\sl240\slmult1 Enter\cell Warp\cell ID of the player\cell ID of the warp\cell 0\cell\row 
+\pard\widctlpar\li840\par
+\par
+\par
+
+\pard\widctlpar\b\fs32 2.Variables\b0\fs22\par
+\b\fs28 2.a\par
+
+\pard\widctlpar\li840\f0\fs22 2.a.1 What are Variables?\par
+\cf1\b0 Variables come from mathematics.They are abstract concepts in a programming language to store the results of computations.They are commonly accessed by their names.There are several kinds of variables in SMBX.\kerning0\par
+\cf0\b 2.a.2 Kinds of Variables\par
+\b0 There are local variables, global variables and system variables in SMBX.They are different in uses, ranges, and 'life spans'.\par
+\b 2.a.3 Types\par
+\b0 There are mainly two types for variables in SMBX - Double and String(used by some system functions).\par
+Values of string type variables are written in quotation marks, for example,\cf2\b\i "a string"\cf0\b0\i0 .\par
+Some system functions have used another type of variables - Name.\par
+Name stands for a name of something, you do not need quotation marks to express their values.\b\par
+2.a.4 Variables Naming Standard\par
+\b0 Names of variables can only be numbers, letters and combinations of them.Variable names are not case sensitive.They can not have any spaces.\par
+
+\pard\widctlpar\b\fs28 2.b\par
+
+\pard\widctlpar\li840\fs22 2.b.1 Local Variables\par
+\b0 You can define local variables in Level Editor.Local variables are only affective in the level they are defined.They are Double type(IEEE 64-bit 8-bytes,-1.79769313486232\f2\lang2052\'a1\'c1\f0\lang1033 10\super 308\nosupersub  to -4.94065645841247\f2\lang2052\'a1\'c1\f0\lang1033 10\super -324 \nosupersub for negative values,4.94065645841247\f2\lang2052\'a1\'c1\f0\lang1033 10\super -324\nosupersub  to 1.79769313486232\f2\lang2052\'a1\'c1\f0\lang1033 10\super 308 \nosupersub for positive values) variables.\par
+\par
+You can control(=read and write) local variables using events and scripts,specially,local variables can be used directly in Messages in events.\par
+\par
+\b 2.b.2 Global Variables\par
+\b0 You can define global variables in World Editor.Global variables are affective in the whole world.They are also Double type variables like local ones.\par
+\par
+You can only fully control global variables using scripts,but you can still get the values of them with events.\par
+\par
+When you define a local/global variable,you also defined a String type local/global variable with the same name!For the use of this string type variable, we will explain later.\par
+
+\pard\widctlpar\b\fs28 2.c\fs22\par
+
+\pard\widctlpar\li840\b0 For the built-in variables, there are system variables and game data variables.Their values will change automatically.The types and ranges are different from one to another.\par
+\par
+System variables, for example, 1-ups, coins, score, number of NPCs in a level, are read-only variables.Their values are updated as the game runs.\par
+\par
+Game data variables are sets of complex variables, which can only be accessed through scripts.Datas stored in NPCs,blocks and players belong to this type.\par
+\par
+
+\pard\widctlpar\b\fs32 3.Expressions\b0\fs22\par
+\b\fs28 3.a\par
+
+\pard\widctlpar\li840\fs22 3.a.1 Mathematical Expressions\par
+\b0 Mathematical expressions are made up by mathematical symbols and functions,they will return a number after calculation.\par
+\par
+Mathematical symbols supported by the game:\par
+[+] plus,eg: 1+1=2\par
+[-] minus,eg: 2-1=1\par
+[*] multiplication,eg: 3*4=12\par
+[/] division,eg: 5/4=1.25\par
+[\\] divide with no remainder,eg: 6\\4=1\par
+[^] power,eg: 2^3=8\par
+[mod] get the remainder,eg: 3 mod 2=1\par
+[()] brackets,to adjust the order of computation,eg: 2*(1+3)=8\par
+[&] linking symbol,eg: 1&2=12\par
+\par
+The game also supports many kinds of functions, including mathematical functions,system functions and custom functions.We only explain the uses of mathematical functions here.\par
+[abs] returns the absolute value of the parameter,eg: abs(-1)=1\par
+[atn] returns the arctangent value,eg: 4*atn(1)=3.141592654...\par
+[cos] returns the cosine value,eg:  cos(3.1415926)=-1\par
+[exp] returns the power of e,eg: exp(4) is equal to e^4\par
+[fix] rounds the parameter,eg: fix(4.44)=4\f2\lang2052\'a3\'ac\f0\lang1033 fix(-4.44)=-4\par
+[int] rounds the parameter,eg: int(4.44)=4\f2\lang2052\'a3\'ac\f0\lang1033 int(-4.44)=-5\par
+[log] return the natural logarithm value,eg: log(e)=1\par
+[sgn] get the sign of the parameter,eg: sgn(5)=1\f2\lang2052\'a3\'ac\f0\lang1033 sgn(-5)=-1\par
+[sin] returns the sine value,eg: sin(3.1415926)=0\par
+[sqr] returns the square root,eg: sqr(2) is equal to 2^0.5\par
+[tan] returns the tangent value,eg: tan(3.1415926)=0\par
+[rnd] returns a random value between 0 and 1, has no parameters, can be used directly,eg: 4*rnd\par
+*Use radians in trigonometric functions.\par
+\par
+\b 3.a.2 Assignment\par
+\b0 The assignment is to send the result of an expression to a variable.\par
+\par
+Use:variable=expression\par
+\par
+Example:val(a)=cos(2)+3+sgn(4)+rnd*5+log(6)\par
+\par
+\par
+
+\pard\widctlpar\b\fs28 3.b\par
+
+\pard\widctlpar\li840\b0\fs22 Logical expression are made up by mathematical expressions and logical symbols.They will tell you if the expressions are true.\par
+You will get 0(=false) or 1(=true) after calculations.\par
+\par
+There are two types of logical symbols: comparing operators and logical operators.The game will calculate comparing operators first.\par
+\par
+Comparing operators supported by the game:\par
+[=] equal,eg: 1=1 returns 1(=true), 1=0 returns 0(=false)\par
+[>] greater than,eg: 1>0 returns 1, 1>2 returns 0\par
+[<] less than,eg: 1<2 returns 1, 1<0 returns 0\par
+[<>] not equal,eg: 1<>2 returns 1, 1<>1 returns 0\par
+[>=] not less than,eg: 1>=1 returns 1, 1>=2 returns 0\par
+[<=] not greater than,eg: 1<=1 returns 1,1<=0 returns 0\par
+\par
+Logical operators supported by the game:\par
+Unitary operator:[not]\par
+\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1866\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx3000 
+\pard\intbl\widctlpar\b\i P\cell NOT P\cell\row\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1866\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx3000 
+\pard\intbl\widctlpar\b0\i0 0\cell 1\cell\row\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1866\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx3000 
+\pard\intbl\widctlpar 1\cell 0\cell\row 
+\pard\widctlpar\li840 Bivariate operators:[and],[or],[xor],[eqv],[imp]\par
+\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1855\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx2979\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx4136\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx5276\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx6433\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx7590\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx8748 
+\pard\intbl\widctlpar\b\i P\cell Q\cell P AND Q\cell P OR Q\cell P XOR Q\cell P EQV Q\cell P IMP Q\cell\row\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1855\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx2979\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx4136\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx5276\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx6433\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx7590\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx8748 
+\pard\intbl\widctlpar\b0\i0 0\cell 0\cell 0\cell 0\cell 0\cell 1\cell 1\cell\row\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1855\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx2979\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx4136\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx5276\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx6433\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx7590\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx8748 
+\pard\intbl\widctlpar 0\cell 1\cell 0\cell 1\cell 1\cell 0\cell 1\cell\row\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1855\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx2979\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx4136\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx5276\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx6433\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx7590\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx8748 
+\pard\intbl\widctlpar 1\cell 0\cell 0\cell 1\cell 1\cell 0\cell 0\cell\row\trowd\trgaph10\trleft732\trbrdrl\brdrs\brdrw10\brdrcf1 \trbrdrt\brdrs\brdrw10\brdrcf1 \trbrdrr\brdrs\brdrw10\brdrcf1 \trbrdrb\brdrs\brdrw10\brdrcf1 \trpaddl10\trpaddr10\trpaddfl3\trpaddfr3
+\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx1855\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx2979\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx4136\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx5276\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx6433\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx7590\clbrdrl\brdrw10\brdrs\brdrcf1\clbrdrt\brdrw10\brdrs\brdrcf1\clbrdrr\brdrw10\brdrs\brdrcf1\clbrdrb\brdrw10\brdrs\brdrcf1 \cellx8748 
+\pard\intbl\widctlpar 1\cell 1\cell 1\cell 1\cell 0\cell 1\cell 1\cell\row 
+\pard\widctlpar\li840\par
+Logical expressions are commonly used in 'If' statements,you can also use them to set the value of variables,of course.\par
+
+\pard\widctlpar\b\fs28 3.c\par
+
+\pard\widctlpar\li840\b0\fs22 You can also use expressions in events, and all mathematical functions and symbols mentioned above are supported in events.But there is a big limit in other functions and special variables in events.Only the following variables are supported in events, they can be used in the same way in scripts.\par
+\par
+[val]or[v]:local variables\par
+[gval]or[gv]:global variables(ReadOnly)\par
+[lvltimer]:the game timer(ReadOnly)\par
+[sysval]:system variables(ReadOnly)\par
+\par
+Messages in events can include local variables,as for the use,input &val(*variable name*).\par
+Example:you need &val(a) stars to enter.\par
+\par
+
+\pard\widctlpar\b\fs32 4.Control Flow\b0\fs22\par
+\b\fs28 4.a\par
+
+\pard\widctlpar\li840\b0\fs22 'If' statements will execute expressions if given condition expressions return true.\par
+Use:\par
+\cf3\b If\cf0\b0  \cf4\i condition \cf3\b\i0 Then\cf0\b0\par
+[statement]\par
+[\cf3\b Elseif\cf0\b0  \cf4\i condition-n\cf0\i0  \cf3\b Then\cf0\b0 ]\par
+[statement]\par
+[\cf3\b Else\cf0\b0 ]\par
+[statement]\par
+\cf3\b End If\par
+\cf0\b0\par
+Things in '[]' is optional.'Condition' means a logical expression.\par
+Multiple 'Elseif' can exist in a 'If' statement, but only one for 'Else'.\par
+\par
+If 'condition' returns true,the game will execute the following statement and then jump to 'End If' to execute other statements.\par
+\par
+\par
+
+\pard\widctlpar\b\fs28 4.b\par
+
+\pard\widctlpar\li840\b0\fs22 'Select Case' statements will select one of the given statements according to the result of the test-expression.\par
+Use:\par
+\cf3\b Select Case\cf0\b0  \cf4\i test-expression\cf0\i0\par
+\cf3\b Case\cf0\b0  \cf4\i experssion\cf0\i0\par
+[statement]\par
+[\cf3\b Case\cf0\b0  \cf4\i expression-n\cf0\i0 ]\par
+[statement]\par
+[\cf3\b Case Else\cf0\b0 ]\par
+[statement]\par
+\cf3\b End Select\par
+\cf0\b0\par
+Things in '[]' is optional.'Expression' is a mathematical expression.\par
+Multiple 'Case' can exist in a 'Select Case' statement, but only one for 'Case Else'.\par
+\par
+The game will first calculate the 'test-expression' and get the return value, then search for the expressions following 'Case' which returns the same value.Once the expression is found, the game will immediately execute the statements following it and jump to 'End Select' to execute other statements.\par
+\par
+
+\pard\widctlpar\b\fs28 4.c\par
+
+\pard\widctlpar\li840\b0\fs22 'For' statements repeat executing a set of statements for certain times.\par
+Use:\par
+\cf3\b For\cf0\b0  \cf4\i counter\cf0\i0  = \cf4\i start\cf0\i0  \cf3\b To\cf0\b0  \cf4\i End\cf0\i0  [\cf3\b Step\cf0\b0  \cf4\i step\cf0\i0 ]\par
+[statement]\par
+[\cf3\b Exit For\cf0\b0 ]\par
+\cf3\b Next\par
+\cf0\b0\par
+Things in '[]' is optional.'Counter' is a local variable.'Start','end','step' are mathematical expressions.'Exit For' can exist in the statements with an unlimited number.When 'Exit For' is executed, the game will jump to 'Next' to execute other statements outside 'For' statements.\par
+\par
+The 'step' is defaultly set to 1 if ignored.\par
+\par
+When the 'For' statements are executed, the game will send the value of 'start' to the local variable 'counter'.Then 'statement' is executed.When the calculation reaches 'Next', the game will add the step value to 'counter' and compare the 'counter' variable to 'End'.If the value of the 'counter' is greater than 'End',the game will jump to 'Next' and continue execute statements after 'Next', or the game will repeat executing statements inside the 'For' statement.\par
+\par
+Here is an example:\par
+\cf3\b For\cf0\b0  \cf3\b val\cf0\b0 (a) = 1 \cf3\b To\cf0\b0  10 \cf3\b Step\cf0\b0  2\par
+  \cf3\b If val\cf0\b0 (a) = 5 \cf3\b Then\par
+\cf0\b0     \cf3\b Exit For\par
+\cf0\b0   \cf3\b End If\par
+Next\par
+\par
+\cf0\b0\par
+
+\pard\widctlpar\b\fs28 4.d\par
+
+\pard\widctlpar\li840\b0\fs22 'Do' statements repeat executing the statements inside them.\par
+Use:\par
+\par
+\cf3\b Do \cf0\b0 [\{\cf3\b While\cf0\b0 |\cf3\b Until\cf0\b0\} \cf4\i condition\cf0\i0 ]\cf3\b\par
+\cf0\b0 [statement]\par
+[\cf3\b Exit Do\cf0\b0 ]\par
+\cf3\b Loop\cf0\b0  [\{\cf3\b While\cf0\b0 |\cf3\b Until\cf0\b0\} \cf4\i condition\cf0\i0 ]\par
+\par
+You can only choose one '[]',either the one following 'Do' or the one following 'Loop', and only one key word in the '[]','While' or 'Until'.'Condition' is a logical expression..'Exit Do' can exist in the statements with an unlimited number.When 'Exit Do' is executed, the game will jump to 'Loop' to execute other statements outside 'Do' expressions.\par
+\par
+If 'While' key word is chosen, the game will repeat executing the statements inside the 'Do' statements until 'condition' returns true.\par
+If 'Until' key word is chosen, the game will repeat executing the statements inside the 'Do' statements until 'condition' returns false.\par
+\par
+
+\pard\widctlpar\b\fs28 4.e\par
+
+\pard\widctlpar\li840\b0\fs22 'With' statements apply a set of statements to a given object.\par
+Use:\par
+\cf3\b With\cf0\b0  \cf4\i object\cf0\i0\par
+[statement]\par
+\cf3\b End With\par
+\cf0\b0\par
+'Object' means an object in the game.Here is an example:\par
+\cf3\b With\cf0\b0  npc(1)\par
+.x = 12345\par
+.y = 54321\par
+\cf3\b End With\par
+\cf0\b0\par
+
+\pard\widctlpar\b\fs28 4.f\par
+
+\pard\widctlpar\li840\b0\fs22 'Goto' statements,when they are executed, will force the calculation to jump to a given line of the script.\par
+\cf3\b Goto\cf0\b0  \cf4\i line\cf0\i0\par
+\par
+'Line' is a name of a label.Labels are made in the following way:\par
+\cf4\i line:\cf0\i0\par
+Label names should not consist of symbols that should not exist in variables.There should also not be two labels with the same name in a single script.You can not use 'Goto' statements inter-functionally.There should not be 'Goto' statements inside 'With' statements,either.\par
+\par
+Here is an example of endless looping(avoid these things in your scripts):\par
+endless:\par
+\cf3\b val\cf0\b0 (a) = 1\par
+\cf3\b Goto\cf0\b0  endless\par
+\par
+'Gosub' statements is an alternative version of 'Goto' statements but with some differences. When they are executed, the program will also be forced to jump to a given line. What makes it differ from 'Goto' statements is that a 'return' statement can be followed after it. When the 'return' statement is executed, the program will return to the next line of the corresponding 'Gosub' statement and continue executing. If a 'return' statement occurred without a 'Gosub' statement, it will be ignored. Like 'Goto' statements, 'Gosub' statements can not be used in 'with' blocks, nor can it be used inter-functionally, and if a script or a function exits without exiting all 'gosub' statements, the return stack in the current structure will be cleared. 'Gosub' statements will not affect the usablility of 'sleep' functions therefore 'sleep' functions can be used within sub procedures, and in this situation the return stack will not be cleared.\par
+\par
+\cf3\b Gosub\cf0\b0  \cf4\i line\cf0\i0\par
+\par
+Here is a example using 'gosub' statements to iterate.\par
+mysub:\par
+\cf3\b val\cf0\b0 (a) = \cf3\b val\cf0\b0 (a) + 1\par
+\cf3\b If val\cf0\b0 (a) < 10 \cf3\b Then\cf0\b0\par
+\cf3\b Gosub\cf0\b0  mysub\par
+\cf3\b End If\cf0\b0\par
+\cf3\b Return\cf0\b0\par
+\par
+\par
+
+\pard\widctlpar\b\fs32 5.Functions and Procedures\b0\fs22\par
+\b\fs28 5.a\par
+
+\pard\widctlpar\li840\b0\fs22 Here are some examples using functions and procedures.\par
+\cf3\b Call\cf0\b0  LSet(LayerA,0,1)\par
+\cf3\b Call\cf0\b0  NKill(getID(\cf3\b val\cf0\b0 (a)),0,0,0,0,0,1,1)\par
+\cf3\b val\cf0\b0 (a) = NCreate(1,\cf3\b val\cf0\b0 (b),\cf3\b val\cf0\b0 (c),0,0,0,0)\par
+\cf3\b Call\cf0\b0  ShowMsg(\cf2\b\i "You need "\cf0\b0\i0  & CStr(\cf3\b val\cf0\b0 (c)) & \cf2\b\i " stars to enter."\cf0\b0\i0 )\par
+\par
+[LMove]\par
+LMove(\cf4\i layername\cf0\i0 , \cf4\i px\cf0\i0 , \cf4\i py\cf0\i0 , \cf4\i type\cf0\i0 )\par
+To move a layer.\par
+layername (Layer) Name of the layer you want to move.\par
+px(Double) x-axis parameter of the movement.\{Speed|Relative Shift\}\par
+py(Double) y-axis parameter of the movement.\{Speed|Relative Shift\}\par
+type(Double) Moving style.Set it to 0 to move layers with the given speeds,set it to 1 to move layers with the given relative shifts.\par
+When used in global scripts, this function will affect the layers in your world map.\par
+\par
+[LSet]\par
+LSet(\cf4\i layername\cf0\i0 , \cf4\i type\cf0\i0 , \cf4\i advset\cf0\i0 )\par
+To change the visiblity of a layer.\par
+layername (Layer) Layer name.\par
+type(Double) Style,1 = Show,2 = Hide,3 = Toggle\par
+advset(Double) Whether smoke effects are shown,set to 0 to show them,set to values other than 0 to stop them from showing.\par
+When used in global scripts, this function will affect the layers in your world map.\cf5\i\par
+\cf6\fs16 Specially, you can modify the transparency of the layers by setting the 'type' parameter to 38. In this case the advset would be an integer between 0 and 255, which stands for the transparency. The transparency settings will affect blocks, NPCs and backgrounds but will NOT affect the layers in world maps.\par
+\cf0\i0\fs22\par
+[LSpin]\par
+LSpin(\cf4\i layername\cf0\i0 , \cf4\i cx\cf0\i0 , \cf4\i cy\cf0\i0 , \cf4\i aspeed\cf0\i0 )\par
+To rotate a layer.\par
+layername (Layer) Layer name.\par
+cx (Double) the x-position of the rotation center\par
+cy (Double) the y-position of the rotation center\par
+aspeed(Double) the angular speed of the rotation, set to 0 to reset the rotation process\par
+When used in global scripts, this function will affect the layers in your world map.\par
+This function only affects NPCs and Blocks.\par
+\par
+[ShowMsg]\par
+ShowMsg(\cf4\i string\cf0\i0 )\par
+To show a message box.\par
+string(String) Messages shown.\par
+\par
+[FXCreate]\par
+FXCreate(\cf4\i id\cf0\i0 , \cf4\i x\cf0\i0 , \cf4\i y\cf0\i0 , \cf4\i sx\cf0\i0 , \cf4\i sy\cf0\i0 , \cf4\i f\cf0\i0 , \cf4\i fs\cf0\i0 , \cf4\i fc\cf0\i0 , \cf4\i ng\cf0\i0 , \cf4\i advset\cf0\i0 )\par
+To create an effect\par
+id(Double) Effect ID\par
+x(Double) x-position of the effect\par
+y(Double) y-position of the effect\par
+sx(Double) x-axis speed of the effect\par
+sy(Double) y-axis speed of the effect\par
+f(Double) determines how many frames the effect will last\par
+fs(Double) determines how fast the effect animation plays\par
+fc(Double) playing const of the effect.Default value is 0.\par
+ng(Double) set this to 0 to enable the gravity for the effect,set this to a value other than 0 to disable it.\par
+advset(Double) extra data for the effect.Default value is 0.\par
+\par
+[TCreate]\par
+TCreate(\cf4\i eventname\cf0\i0 , \cf4\i delay\cf0\i0 )\par
+To create a event timer.\par
+eventname(Event) The name of the event to be triggered\par
+delay(Double) frames to wait\par
+\par
+[PlayNote]\par
+PlayNote(\cf4\i command\cf0\i0 )\par
+To play a note.\par
+command(Double) send a command to the sound card to make it play a note or set the playing mode.\par
+\par
+The 'command' can be:\par
+To change the instrument:\cf4\i Patch\cf0\i0  * 256 + 192 + \cf4\i Channel\cf0\i0\par
+To play a note:\cf4\i Volume\cf0\i0  * 65536 + \cf4\i Flip\cf0\i0  * 256 + 144 + \cf4\i Channel\cf0\i0\par
+To stop the playing note:\cf4\i Volume\cf0\i0  * 65536 + \cf4\i Flip\cf0\i0  * 256 + 128 + \cf4\i Channel\cf0\i0\par
+Volume stands for how loud the note played.Range:0-100\par
+Flip stands for the pitch of the note.Range:0-255\par
+Channel stands for the channel the note plays in.Range:0-15(Default:0)\par
+Patch stands for the ID of instruments.Range:0-127\par
+\par
+[Sleep]\par
+Sleep(\cf4\i delay\cf0\i0 )\par
+Temporary stops the script from further executing for a short time.\par
+delay(Double) sets the number of frames delayed\par
+\par
+You can \cf7\b only \cf0\b0 use this in scripts triggered by events, not in custom functions and procedures.\par
+\par
+[TClear]\par
+TClear(\cf4\i type\cf0\i0 , \cf4\i eventname\cf0\i0 )\par
+To delete a event timer.\par
+type(Double) clear type.Set this to 1 to clear all activated event timers.Set this to 0 to clear only the timer of the given event\par
+eventname(Event) to set the event name if clear type is set to 0\par
+\par
+[EXEScript]\par
+EXEScript(\cf4\i scriptname\cf0\i0 )\par
+To execute a local/global script.\par
+scriptname(Script) the name of the script to be executed.\par
+When this function is called, the given script will immediately be executed and the original script will be halted until the execution of the given script completes.\par
+\par
+[Debug]\par
+Debug(\cf4\i string\cf0\i0 )\par
+To output texts to the debugger.\par
+string(String) the string to be outputted.\par
+If the level is tested in the editor, this function will output the information in the string to the debug window in Debugger, otherwise it won't do anything. However, for better game performance, you should delete all 'Debug' functions after debugging.\par
+\par
+[HUDSet]\par
+HUDSet(\cf4\i command\cf0\i0 , \cf4\i p1\cf0\i0 , \cf4\i p2\cf0\i0 , \cf4\i p3\cf0\i0 , \cf4\i p4\cf0\i0 , \cf4\i p5\cf0\i0 , \cf4\i p6\cf0\i0 , \cf4\i p7\cf0\i0 , \cf4\i p8\cf0\i0 , \cf4\i p9\cf0\i0 )\par
+To modify the HUD (short for 'head-up display'). This is a compacted function with its effect varying form the parameter 'command'.\par
+Parameter p1, p2, p3, ... ,p9 are all double type parameters which have different meanings according to the parameter 'command'.\par
+command(String) the command to be executed and it can be:\par
+1) "\cf8 initialize\cf0 ": all parameters are not used for this command and should be 0. This command will forcefully initialize the HUD system and erases all the previous custom HUD data.\par
+2) "\cf8 destroy\cf0 ": all parameters are not used for this command and should be 0. This command will disable the custom HUD system and erases all the previous custom HUD data.\par
+3) "\cf8 bitmap\cf0 ": to add a bitmap to the HUD. Uses '\cf7\b scflash.png\cf0\b0 ' as the bitmap source. The function is used in this way.\par
+HUDSet("bitmap", id, sx, sy, sw, sh, dx, dy, advset, color)\par
+id(Double/Int32) stands for the exclusive ID of the bitmap. The function will create a new bitmap if the ID is unused, otherwise it will overwrite the existing bitmap.\par
+sx(Double/Int32) stands for the x-position of the left-top point in the bitmap source file\par
+sy(Double/Int32) stands for the y-position of the left-top point in the bitmap source file\par
+sw(Double/Int32) stands for the width of the cropped bitmap\par
+sh(Double/Int32) stands for the height of the cropped bitmap\par
+dx(Double/Int32) stands for the x-position of the destination point on the screen. The left-top point of the screen has a x-position of 0.\par
+dy(Double/Int32) stands for the y-position of the destination point on the screen. The left-top point of the screen has a y-position of 0.\par
+advset(Double/Int32) advanced settings. Can be one of these values:\par
+\cf5\i\fs16 1000 to 1000+NPCNum : shows the image of the NPC with a type ID of [advset-1000]\par
+5001 : shows the image of the NPC in player one's item box\par
+5002 : shows the image of the NPC in player two's item box\par
+6001 to 6003 : if the [advset-6000]th starcoin has been acquired then the bitmap will be normally drawn, or it won't be drawn.\par
+\cf0\i0\fs22 If the advset is set to a valid value, the parameter sx and sy will be unused and the parameter sw and sh will become the stretch ratios of the bitmap drawn. For example, \cf5\i if advset is set to 5001 or 5002 and sw, sh set to 1, the size of the drawn bitmap will be 32*32.\par
+\cf0\i0 color(Double/Int32) stands for a certain color. The default value is -1 and type 0 to make the bitmap completely transparent.\par
+4) "\cf8 text\cf0 :\cf9\b *\cf0\b0 " :to add a text to the custom HUD. [\cf9\b *\cf0\b0 ] can be any valid strings to be displayed. This function uses a NPC as the font. The function is now used in this way:\par
+HUDSet("text:\cf9\b *\cf0\b0 ", id, dx, dy, startasc, endasc, lnum, npcid, color, -1)\par
+id(Double/Int32) stands for the only ID of the text created. The function will create a new text if the ID is unused, otherwise it will overwrite the existing text.\par
+dx(Double/Int32) stands for the x-position of the text. The left-top point of the screen has a x-position of 0.\par
+dy(Double/Int32) stands for the y-position of the text. The left-top point of the screen has a y-position of 0.\par
+startasc(Double/In32): the beginning ASCII code of the NPC image font.\par
+endasc(Double/In32): the last ASCII code of the NPC image font.\par
+lnum(Double/In32): the number of characters of a single row in the NPC image file.\par
+npcid(Double/In32): ID of the NPC used as the font.Use the numbers in the NPC image filename as the ID.\par
+color(Double/Int32) stands for a certain color. The default value is -1 and type 0 to make the text completely transparent.\par
+\par
+[TxtCreate]\par
+TxtCreate(\cf4\i id\cf0\i0 , \cf4\i x\cf0\i0 , \cf4\i y\cf0\i0 , \cf4\i sasc\cf0\i0 , \cf4\i easc\cf0\i0 , \cf4\i cdata\cf0\i0 , \cf4\i lnum\cf0\i0 , \cf4\i fontid\cf0\i0 , \cf4\i flag\cf0\i0 , \cf4\i text\cf0\i0 )\par
+To show a piece of text using the image of an NPC as the font.\par
+id(Double/Int32): the only ID of the text object created.\par
+x(Double/In32): x-position of the text\par
+y(Double/In32): y-position of the text\par
+sasc(Double/In32): the beginning ASCII code of the NPC image font.\par
+easc(Double/In32): the last ASCII code of the NPC image font.\par
+cdata(Double/In32): reserved.Type 0.\par
+lnum(Double/In32): the number of characters of a single row in the NPC image file.\par
+fontid(Double/In32): ID of the NPC used as the font.Use the numbers in the NPC image filename as the ID.\par
+flag(Double/In32): Set this to 0 and the coordinate will be oriented to the level coordinate system.Set this to 1 and it will be oriented to the screen.\par
+text(String): the text shown.\par
+\par
+[BmpCreate]\par
+BmpCreate(\cf4\i id\cf0 ,\cf4  picid\cf0 ,\cf4  flagA\cf0 ,\cf4  flagB\cf0 ,\cf4  sx\cf0 ,\cf4  sy\cf0 ,\cf4  sw\cf0 ,\cf4  sh\cf0 ,\cf4  dx\cf0 ,\cf4  dy\cf0 ,\cf4  scx\cf0 ,\cf4  scy\cf0 ,\cf4  pcx\cf0 ,\cf4  pcy\cf0 ,\cf4  angle\cf0 ,\cf4  color\cf0\i0 )\par
+To create a highly customable bitmap object. Needs a NPC as the bitmap source.\par
+ID(Double/Int32): stands for the only ID of the bitmap object. The function will create a new bitmap if the ID is unused, otherwise nothing will happen.\par
+picid(Double/Int32): ID of the NPC used as the bitmap source.Use the numbers in the NPC image filename as the ID.\par
+flagA(Double/Bool): Set this to 0 and the coordinate will be oriented to the level coordinate system.Set this to 1 and it will be oriented to the screen.\par
+flagB(Double/Bool): Set this to 0 and the bitmap created will be hidden. Set this to 1 and the bitmap will be visible.\par
+sx(Double/Int32): stands for the x-position of the left-top point in the bitmap source file\par
+sy(Double/Int32): stands for the y-position of the left-top point in the bitmap source file\par
+sw(Double/Int32): stands for the width of the cropped bitmap\par
+sh(Double/Int32): stands for the height of the cropped bitmap\par
+dx(Double/Int32): stands for the x-position of the bitmap shown.\par
+dy(Double/Int32): stands for the y-position of the bitmap shown.\par
+scx(Double): stands for the x-axis stretch ratio. Default value is 1.\par
+scy(Double): stands for the y-axis stretch ratio. Default value is 1.\par
+pcx(Double/Int32): stands for the x-position of the center point used in stretch and rotation.\par
+pcy(Double/Int32): stands for the y-position of the center point used in stretch and rotation.\par
+angle(Double): stands for the rotation angle of the bitmap.\par
+color(Double/Int32) stands for a certain color. The default value is -1 and type 0 to make the image completely transparent.\par
+\cf10\i Warning: Performance issues may occur if too many bitmaps are created and the game will crash if the area represented by sx, sy, sw, sh is not valid. Use this function with caution! Don't use it in the way as you do with NPCs!\par
+\cf0\i0\par
+[BErase]\par
+BErase(\cf4\i type\cf0\i0 , \cf4\i id\cf0\i0 )\par
+To destroy a bitmap object or text object.\par
+type(Double/Int32) the object type, set this to 0 to destroy an iterator object, set this to 1 to destroy a text object and 2 for a bitmap object.\f2  \par
+\f0 ID(Double/Int32)  the exclusive ID of the object to be destroyed. The function will do nothing if the object is not found.\par
+\cf5\i If you are just going to hide the object, modify the 'hide' property instead of using this function.\par
+\par
+\cf0\i0 [TCreateEx]\par
+TCreateEx(\cf4\i Scriptname, Timer, Par1, Par2, Par3\cf0\i0 )\par
+To execute a local/global script after certain frames and pass parameters to the script.\par
+Scriptname(Script): the script to be executed.\par
+Timer(Doubule/Int32): frames to wait.\par
+Par1(Double/Int32): the value to be passed to Sysval(Param1)\par
+Par2(Double/Int32): the value to be passed to Sysval(Param2)\par
+Par3(Double/Int32): the value to be passed to Sysval(Param3)\par
+\cf5\i\par
+\cf0\i0 [AudioSet]\par
+AudioSet(\cf4\i Op, Sid, Par, Filepath\cf0\i0 )\par
+To control the sound effects and music of the game.\par
+Op(Double/Int32): the command to be executed, can be one of the following values:\par
+1: load sound effect\par
+Sid(Double/Int32): sound effect ID. The valid range is 1 to 1024.\par
+Par(Double/Int32): whether only one 'copy' of this sound effect can be played in the same time.\par
+Filepath(String): the file name of the sound effect. The sound file should be placed in the world map folder.\par
+2: play sound effect\par
+Sid(Double/Int32): sound effect ID. The valid range is 1 to 1024.\par
+Other parameters are unused, set them to 0 or an empty string for Filepath.\par
+3: stop sound effect\par
+Sid(Double/Int32): sound effect ID. The valid range is 1 to 1024.\par
+Other parameters are unused, set them to 0 or an empty string for Filepath.\par
+11: play music\par
+Sid(Double/Int32): duration (in milliseconds) of the fade-in effect.\par
+Filepath(String): the file name of the music. The music file should be placed in the world map folder.\par
+Other parameters are unused, set them to 0.\par
+12: stop music\par
+Sid(Double/Int32): duration (in milliseconds) of the fade-out effect.\par
+Other parameters are unused, set them to 0 or an empty string for Filepath.\par
+\par
+
+\pard\widctlpar\b\fs28 5.b\par
+
+\pard\widctlpar\li852\b0\fs22 Functions can be parts of mathematical functions.\par
+\par
+[round]\par
+Round(\cf4\i expression\cf0\i0 , \cf4\i numdecimalplaces\cf0\i0 )\par
+Returns a double type value.This function rounds the value inputted.You can specify how many digits after the decimal dot remaining.\par
+expression(Double) the expression you want to round the result value\par
+numdecimalplaces(Double) number of digits remaining after the decimal dot\par
+\par
+[len]\par
+Len(\cf4\i string\cf0\i0 )\par
+Returns a double type value,telling the length of the string.\par
+string(String) the string to get the length of\par
+\par
+[left]\par
+Left(\cf4\i string\cf0\i0 , \cf4\i length\cf0\i0 )\par
+Returns a string which is cropped from the string inputted.The result string begins from the beginning of the original one and has a limited length.\par
+string(String) the original string to be cropped\par
+length(Double) the length of the result string\par
+\par
+[right]\par
+Right(\cf4\i string\cf0\i0 , \cf4\i length\cf0\i0 )\par
+Returns a string which is cropped from the string inputted.The result string begins from the end of the original one and has a limited length.\par
+string(String) the original string to be cropped\par
+length(Double) the length of the result string\par
+\par
+[mid]\par
+Mid(\cf4\i string\cf0\i0 , \cf4\i start\cf0\i0 , \cf4\i length\cf0\i0 )\par
+Returns a string which is cropped from the string inputted.The result string begins from a definite point of the original one and has a limited length.\par
+string(String) the original string to be cropped\par
+start(Double) the start point of the original string\par
+length(Double) the length of the cropped string\par
+\par
+[replace]\par
+Replace(\cf4\i expression\cf0\i0 , \cf4\i find\cf0\i0 , \cf4\i replacewith\cf0\i0 , \cf4\i start\cf0\i0 , \cf4\i count\cf0\i0 , \cf4\i compare\cf0\i0 )\par
+Returns a string with some parts of the original string replaced by new parts.You can define the parts to be searched for in the original string,and the maximum times of the replacement.\par
+expression(String) the original string\par
+find(String) the parts of the original string to be searched and replaced\par
+replacewith(String) the new string parts used to replace\par
+start(Double) the start point of the search\par
+count(Double) times of the replacement.Set this to -1 to disable this limit.\par
+compare(Double) can be 0 or 1.Set this to 0 to make the search case sensitive\par
+\par
+[chr], [chrW]\par
+Chr(\cf4\i charcode\cf0\i0 )\par
+Returns a string containing a character with the specified code.\par
+charcode(Double) the code of the character\par
+\par
+[asc], [ascW]\par
+Asc(\cf4\i string\cf0\i0 )\par
+To get the character code of the first character in the given string.Returns type double.\par
+string(String) can be any valid strings\par
+\par
+[cstr]\par
+CStr(\cf4\i expression\cf0\i0 )\par
+To convert a number(double type) to string type.\par
+expression(Double) can be any valid expressions returning a number\par
+\par
+[cdbl]\par
+CDbl(\cf4\i expression\cf0\i0 )\par
+To convert a string to a double type number.\par
+expression(String) can be any valid strings\par
+\par
+[instr]\par
+InStr(\cf4\i start\cf0\i0 , \cf4\i string1\cf0\i0 , \cf4\i string2\cf0\i0 )\par
+To return the point of the first appearance of a given string in another string.\par
+start(Double) to specify the start point of the search\par
+string1(String) the original string\par
+string2(String) the string to be searched\par
+\par
+[NCreate]\par
+
+\pard\widctlpar\li840 NCreate(\cf4\i id\cf0\i0 , \cf4\i x\cf0\i0 , \cf4\i y\cf0\i0 , \cf4\i sx\cf0\i0 , \cf4\i sy\cf0\i0 , \cf4\i advset\cf0\i0 , \cf4\i cdata\cf0\i0 )\par
+
+\pard\widctlpar\li852 Returns the permanent ID(double type) of the NPC created.\par
+id(Double)  type-ID of the NPC , eg: 1 for a goomba\par
+x(Double)  x-position of the NPC\par
+y(Double)  y-position of the NPC\par
+sx(Double)  x-axis speed of the NPC\par
+sy(Double) x-axis speed of the NPC\par
+advset(Double) additional data of the NPC.Default:0\par
+cdata(Double) creation information.Default:0\par
+\par
+The permanent ID returned will become effective in the next frame of the creation.The NPC is not really created immediately in the frame the script is executed.\par
+\par
+Specially, when the parameter id is set to -1, the parameter advset can be set to the permanent ID of an NPC, and this function will duplicate the NPC. If the source NPC is a legacy style NPC generator, this function will create a duplicated NPC with generator effects. If the source NPC does not exist, nothing will be done.\par
+\par
+[NKill]\par
+NKill(\cf4\i index\cf0\i0 , \cf4\i rx\cf0\i0 , \cf4\i ry\cf0\i0 , \cf4\i rw\cf0\i0 , \cf4\i rh\cf0\i0 , \cf4\i id\cf0\i0 , \cf4\i effect\cf0\i0 , \cf4\i score\cf0\i0 )\par
+Returns the number of NPCs deleted.\par
+index(Double) Deletion style.If this value is greater than 0,this value will stand for the NPC type-ID.If this value is 0, the function will delete the specified NPC.If this value is -1, this function will delete all NPCs touching a rectangular box.If this value is -2, this function will delete all NPCs fully in a rectangular box.\par
+rx(Double) the x-position of the rectangular box.If 'index' is not -1 or -2,type 0.\par
+ry(Double) the y-position of the rectangular box.If 'index' is not -1 or -2,type 0.\par
+rw(Double) the width of the rectangular box.If 'index' is not -1 or -2,type 0.\par
+rh(Double) the height of the rectangular box.If 'index' is not -1 or -2,type 0.\par
+id(Double) If 'index' is -1 or -2,this stands for the ID of the NPCs to delete.Set this to 0 to delete all NPCs.If 'index' is not -1 or -2,type 0.\par
+effect(Double) to determine whether the dying effects are shown.Set this to 0 to disable the effects.Set this to any number other than 0 to show them.\par
+score(Double) to determine whether players can get score from the delection.Set this to 0 to disable the scoring.Set this to any number other than 0 to enable the scoring.\par
+\par
+[getID]\par
+getID(\cf4\i permid\cf0\i0 )\par
+Returns a double type variable stands for the NPC ID using a permanent ID.\par
+permid(Double) the permanent ID\par
+\par
+[getIDByName]\par
+getIDByName(\cf4\i\f1 Name\cf0\i0 )\par
+To find the object with the given name. Returns the object ID.\par
+Name(String) the name of the object to be found\par
+\par
+[ItrCreate]\par
+ItrCreate(\cf4\i type, id, x, y, w, h\cf0\i0 )\par
+To create an iterator which can be used to quickly iterate through all IDs of objects that satisfy a certain condition. Returns the ID of the iterator created. Returns 0 if this function failed. Use BErase to destroy an iterator.\par
+type(Double) the type of objects to be iterated. 1 for blocks, 2 for NPCs, 3 for background objects, 11 for blocks on the current screen, 12 for activate NPCs.\par
+id(Double) ID filter of the iterator, set this to 0 for no ID filtering, or the iterator only iterate through objects with the same image file ID.\par
+x(Double) x-position of the range filter, the iterator only iterate through objects within the given rectangular region.\par
+y(Double) y-position of the range filter, the iterator only iterate through objects within the given rectangular region.\par
+w(Double) width of the range filter, the iterator only iterate through objects within the given rectangular region.\par
+h(Double) height of the range filter, the iterator only iterate through objects within the given rectangular region.\cf7\f2\par
+\cf0\f0\par
+\f1 [ItrNext]\par
+ItrNext(\cf4\i ItrID\cf0\i0 )\par
+To get the next object of the iterator. Returns the object ID. If the object does not exist, the return value will be 0 and the iterator will be destoryed.\par
+ItrID(Double) ID of the iterator. If the iterator does not exist or the iteration has been ended, the function will return 0.\par
+\f0\par
+[sysval]\par
+sysval(\cf4\i cname\cf0\i0 )\par
+Returns the value of a system variable.\par
+cname(Name) the name of the system variable.\par
+\par
+\f1 The 'cname' can be:\par
+NCount stands for the number of NPCs existing.\par
+BCount stands for the number of blocks existing.\par
+BGOCount stands for then number of background objects existing.\par
+WCount stands for the number of warps existing.\par
+LCount stands for the number of liquids existing.\par
+GameMode stands for the current game mode. 0 means single player mode, 1 means two player mode, 2 means battle mode.\par
+ScrSplitstyle stands for the screen splitting status.\par
+\f0 Player1scrX stands for the left-top x-position of the camera for player1.\par
+Player1scrY stands for the left-top y-position of the camera for player1.\par
+Player2scrX stands for the left-top x-position of the camera for player2.\par
+Player2scrY stands for the left-top y-position of the camera for player2.\par
+WldInvCount stands for how many items are there in the world map inventory.\cf7\par
+\cf0 Playerhealth(Writable) stands for the current 1up number.\par
+CoinCount(Writable) stands for the coins number.\par
+Score(Writable) stands for the current score.\par
+StarCount stands for the current star number.\par
+Param1 stands for the first parameter transmitted from events.\par
+Param2 stands for the second parameter transmitted from events.\par
+\f1 Param3 stands \f0 for the \f2 third\f0  parameter transmitted from events.\par
+BPlayer1Health stands for the 1-up number of the first player in battle mode.\par
+BPlayer2Health stands for the 1-up number of the first player in battle mode.\par
+EnableLighting(WriteOnly) stands for the state of the light system.\par
+Starcoincount stands for the number of acquired star coins.\par
+Disablesave(WriteOnly) stands for whether the player are forbidden to save.\par
+\par
+When you are using events to execute scripts,'Param1' is the object ID triggering the event, while 'Param2' is the type of the object triggering the event.\par
+\par
+\cf6\i\fs16 You can use CNPC code [scripts=script name] to attach a script to a type of NPC.The NPC will execute the script once a frame and all original movements of the NPC will be disabled.'Param1' is set to the NPC ID.You can completely control NPCs using this method.This is the third way to use scripts.\par
+[Warning]You are not supposed to use this unless you are well-prepared.Crashing is frequently occurred if used in a bad way.\cf0\i0\fs22\par
+\par
+
+\pard\widctlpar\b\fs28 5.c\par
+
+\pard\widctlpar\li852\b0\fs22 The grammar is:\par
+\cf3\b Script\cf0\b0  \cf4\i name\cf0\i0 ([\cf4\i arg\cf0\i0  \cf3\b as type\cf0\b0 ],......,[\cf3\b return type\cf0\b0 ])\par
+[statement]\par
+\cf3\b End Script\cf0\b0\par
+\par
+'Name' is the name of the function/procedure.\par
+'Arg' is the name of the arguments.\par
+'Type' can be double or string.\par
+There can only be one or zero 'return'.If there is not a 'return',the 'script' will be a procedure, or it will be a function.\par
+The number of arguments is not limited. \par
+\par
+If it is a function, you can use the following code to define the return value of your function.\par
+\cf3\b return\cf0\b0  \cf4\i expression\cf0\i0\par
+\par
+To use the arguments in custom functions/procedures, input the following codes.\par
+[Param]\par
+Param(\cf4\i pname\cf0\i0 )\par
+Returns the value of the double type argument with the name of 'pname'.\par
+pname(Name) the name of the argument\par
+\par
+[strParam]\par
+strParam(\cf4\i pname\cf0\i0 )\par
+Returns the value of the string type argument with the name of 'pname'.\par
+pname(Name) the name of the argument\par
+\par
+
+\pard\widctlpar\b\fs32 6.Errors\b0\fs22\par
+\b\fs28 6.a\par
+
+\pard\widctlpar\li852\b0\fs22 There are two types of errors in scripts - compiling errors and runtime errors.\par
+\par
+If a script of a level have compiling errors itself,the game will report the error with a pop-up window.All scripts with errors will not be executed.\par
+\par
+If a script has invalid parameters and other 'hidden' errors,the game will crash if the error is triggered when playing the level.This is called a runtime error.Further information about runtime errors can be found in Visual Basic documents.\par
+\par
+
+\pard\widctlpar\b\fs28 6.b\par
+
+\pard\widctlpar\li852\b0\fs22 These are error codes of compiling errors.\par
+\i 0--Syntax error in the expression.\par
+1--Syntax error in the code block.\par
+2--Cannot use 'Goto' statements inside 'With' blocks.\par
+3--Error in the SELECT statement:'Case' expected.\par
+4--Error in the SELECT statement:Invalid expression.\par
+5--Error in the SELECT statement:Blank 'Case' block.\par
+6--Error in the FOR statement:Initial variable not set.\par
+7--Error in the FOR statement:'For' expected.\par
+8--Error in the DO statement:Format error.\par
+9--Error in the WITH statement:Invalid object directed.\par
+10--Error in the GOTO statement:Label not found.\par
+11--Error in the custom function:Invalid parameters.\par
+12--Invalid expression.\par
+13--Syntax error in the variable assignment.\par
+14--Type error in the variable assignment.\par
+15--Error in the custom function:Function not found.\par
+16--Error in the custom function:Invalid definition.\par
+17--Error in the custom function:Invalid return values.\par
+18--Error in the custom function:Ambiguous expression.\par
+19--Syntax error:Expressions between code blocks detected.\par
+31--Error in the IF statement:Incomplete expression.\par
+32--Error in the SELECT statement:Incomplete expression.\par
+33--Error in the WITH statement:Incomplete expression.\par
+34--Error in the FOR statement:Incomplete expression.\par
+35--Error in the DO statement:Incomplete expression.\par
+36--Error in the custom function:Incomplete expression.\par
+37--Invalid custom function detected in the logic statements.\par
+38--Unknown error.\par
+\i0\par
+\par
+
+\pard\widctlpar\b\fs32 Appendix\par
+\fs28 1.Game Variable List\b0\fs22\par
+
+\pard\widctlpar\li852 [v] or [val]\par
+v(\cf4\i name\cf0\i0 ) or val(\cf4\i name\cf0\i0 )\par
+name(Name) the name of the local 'double' type variable variable you want to use\par
+\par
+[gv] or [gval]\par
+gv(\cf4\i name\cf0\i0 ) or gval(\cf4\i name\cf0\i0 )\par
+name(Name) the name of the global 'double' type variable you want to use\par
+\par
+[lvlTimer]\par
+lvlTimer(\cf4\i cname\cf0\i0 )\par
+cname(Name) a name const of the game timer, stands for a certain property of the timer.\par
+\par
+The 'cname' can be:\par
+Count(Double) stands for the current number of the timer\par
+Intv(Double) stands for the number of frames needed for the timer to change\par
+Type(Double) stands for the timing mode of the timer\par
+Show(Double) stands for whether the timer is shown\par
+X(Double) stands for the x-position of the timer\par
+Y(Double) stands for the y-position of the timer\par
+Color(Double/Int32) stands for the color of the timer\par
+\par
+[str]\par
+str(\cf4\i name\cf0\i0 )\par
+name(Name) the name of the local  'string' type variable you want to use\par
+\par
+[gstr]\par
+gstr(\cf4\i name\cf0\i0 )\par
+name(Name) the name of the global 'string' type variable you want to use\par
+\par
+[NPC]\par
+NPC(\cf4\i id\cf0\i0 ).\cf4\i name\cf0\i0\par
+id(Double) ID of the specified NPC\par
+name(Name) the property of the specified NPC\par
+\par
+The 'name' can be:\par
+X(Double) stands for the x-position of the NPC\par
+Y(Double) stands for the y-position of the NPC\par
+prX(Double) stands for the original x-position of the NPC\par
+prY(Double) stands for the original y-position of the NPC\par
+Xsp(Double) stands for the x-axis speed of the NPC\par
+Ysp(Double) stands for the y-axis speed of the NPC\par
+ID(Double/Int32) stands for the type ID of the NPC,eg: 10 for a SMB3 coin\par
+addvx(Double) stands for the x-axis platform speed of the NPC\par
+addvy(Double) stands for the y-axis platform speed of the NPC\par
+facing(Double/bool) stands for the facing direction of the NPC\par
+friendly(Double/bool) stands for whether the NPC is 'friendly'\par
+NoMove(Double/bool) stands for whether the NPC is in 'don't move' state\par
+curframe(Double/Int32) stands for the current frame of the NPC\par
+health(Double/Int32) stands for the health points of the NPC\par
+advSet(Double/Int32) stands for the additional data of the NPC\par
+permID(Double+ReadOnly) stands for the permanent ID of the NPC\par
+alive(Double/bool) stands for whether the NPC is alive\par
+ivala(Double/Int32) stands for the individual variable A of the NPC\par
+ivalb(Double/Int32) stands for the individual variable B of the NPC\par
+ivalc(Double/Int32) stands for the individual variable C of the NPC\par
+Name(String) stands for the name of this object\par
+\par
+[Block]\par
+Block(\cf4\i id\cf0\i0 ).\cf4\i name\cf0\i0\par
+id(Double) ID of the block\par
+name(Name) the property of the specified block\par
+\par
+The 'name' can be:\par
+X(Double) stands for the x-position of the block\par
+Y(Double) stands for the y-position of the block\par
+Xsp(Double) stands for the x-axis speed of the block\par
+Ysp(Double) stands for the y-axis speed of the block\par
+ID(Double/Int32) stands for the ID of the block\par
+advset(Double/Int32) stands for the ID of the block's content\par
+Name(String) stands for the name of this object\par
+\par
+[Char]\par
+Char(\cf4\i id\cf0\i0 ).\cf4\i name\cf0\i0\par
+id(Double) ID of the player\par
+name(Name) the property of the specified player\par
+\par
+The 'name' can be:\par
+X(Double) stands for the x-position of the player\par
+Y(Double) stands for the y-position of the player\par
+Status(Double/Int16) stands for the current state of the player\par
+InvTime(Double) stands for the invincible time left for the player\par
+Xsp(Double) stands for the x-axis speed of the player\par
+Ysp(Double) stands for the y-axis speed of the player\par
+ItemSlot(Double/Int16) stands for the mount player currently has\par
+itemRsrv(Double/Int16) stands for the type ID of the NPC reserved in the player's item box.\par
+Brightness(Double/Int16) stands for the brightness of the player (used in light system)\par
+hitpoint(Double/Int16) stands for the current health of the player if the player is \f1 Peach, Toad or Link\par
+facing(Double/Bool) stands for the direction of the player currently facing\par
+bombcnt(Double/Int16) stands for the number of bombs the player currently has\par
+keycnt(Double/Int16) stands for the number of keys the player currently has\par
+fluddcap(Double/Int16) stands for the capacity of player's F.L.U.D.D.\par
+\par
+[Bgo]\par
+Bgo(\cf4\i id\cf0\i0 ).\cf4\i name\cf0\i0\par
+id(Double) ID of the background object\par
+name(Name) the property of the specified background object\par
+\par
+The 'name' can be:\par
+X(Double) stands for the x-position of the background object\par
+Y(Double) stands for the y-position of the background object\par
+Xsp(Double) stands for the x-axis speed of the background object\par
+Ysp(Double) stands for the y-axis speed of the background object\par
+ID(Double/Int32) stands for the ID of the background object\par
+\par
+[Liquid]\par
+Liquid(\cf4\i id\cf0\i0 ).\cf4\i name\cf0\i0\par
+id(Double) ID of the liquid\par
+name(Name) the property of the specified liquid\par
+\par
+The 'name' can be:\par
+X(Double) stands for the x-position of the liquid\par
+Y(Double) stands for the y-position of the liquid\par
+Xsp(Double) stands for the x-axis speed of the liquid\par
+Ysp(Double) stands for the y-axis speed of the liquid\par
+Fdir(Double) stands for the direction of the force field\par
+Fval(Double) stands for the acceleration of the force field\par
+Fmax(Double) stands for the max speed of the force field\par
+\f2\par
+\f1 [Warp]\par
+Warp(\cf4\i id\cf0\i0 ).\cf4\i name\par
+\cf0\i0 id(Double) ID of the warp\par
+name(Name) the property of the specified warp\par
+\f2\par
+\f0 The 'name' can be:\par
+X(Double) stands for the x-position of the warp entrance\par
+Y(Double) stands for the y-position of the warp entrance\par
+Ex(Double) stands for the x-position of the warp exit\par
+Ey(Double) stands for the y-position of the warp exit\par
+Xsp(Double) stands for the x-axis speed of the warp\par
+Ysp(Double) stands for the y-axis speed of the warp\par
+Cannon(Double) stands for the flight duration of the pipe type warp\par
+Starcnt(Double) stands for the number of stars needed to enter the warp\par
+Starmsg(String) stands for the message displayed when the player does not have enough stars to enter the warp\par
+Locked(Double) stands for whether a key is needed to enter the warp\par
+Bomb(Double) stands for whether a bomb is needed to enter the warp\par
+Noyoshi(Double) stands for whether mounts are allowed to enter the warp\par
+Canpick(Double) stands for whether items can be carried when entering the warp\par
+Mini(Double) stande for whether this warp is only available for mini players\f2\par
+\par
+\f1 [Bgp]\par
+\f0 Bgp(\cf4\i id\cf0\i0 ).\cf4\i name\cf7\i0\par
+\cf0 id(Double) ID of the background picture\par
+name(Name) the property of the specified background picture\par
+\par
+The 'name' can be:\par
+Splitcount(Double) stands for how many times the picture is splitted. Different parts have different configurations.\par
+Splitter(String) the y-positions of the splitting points, consists of a series of integers separated by commas.\par
+Zsp(String) the offset constants of the picture parts, consists of a series of floating point values separated by commas.\par
+Movesp(String) the moving speed of the picture parts, consists of a series of floating point values separated by commas.\par
+Offset(String) the current offset value of the picture parts, consists of a series of floating point values separated by commas.\par
+\par
+[Text]\par
+Text(\cf4\i id\cf0\i0 ).\cf4\i name\par
+\cf0\i0 ID (Double) the exclusice ID of the text object\par
+name (Name) the property of the specified bitmap\par
+\par
+The 'name' can be:\par
+x (Double) stands for the x-position of the text\par
+y (Double) stands for the y-position of the text\par
+text (String) stands for the content of the text\par
+hide (Double/Bool) stands for whether the text is not visible\par
+\par
+[Bitmap]\par
+Bitmap(\cf4\i id\cf0\i0 ).\cf4\i name\par
+\cf0\i0 Id (Double) the exclusive ID of the bitmap object\par
+name (Name) the property of the specified bitmap\par
+\par
+The 'name' can be:\par
+destx (Double) stands for the x-position of the bitmap\par
+desty (Double) stands for the y-position of the bitmap\par
+scalex (Double) stands for the x-axis scale ratio of the bitmap\par
+scaley (Double) stands for the y-axis scale ratio of the bitmap\par
+rotatang (Double) stands for the the rotation angle of the bitmap\par
+hide (Double/Bool) stands for whether the bitmap is not visible\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+\par
+}
+ 

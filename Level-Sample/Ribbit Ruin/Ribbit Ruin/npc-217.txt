@@ -1,0 +1,7 @@
+gfxwidth=18
+gfxheight=22
+frames=6
+framestyle=1
+noblockcollision=0
+nonpccollision=1
+scripts=frog

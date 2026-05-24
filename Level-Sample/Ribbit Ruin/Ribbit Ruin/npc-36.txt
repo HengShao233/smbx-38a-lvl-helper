@@ -1,0 +1,7 @@
+gfxheight=48
+frames=1
+framestyle=3
+spinjump=1
+jumphurt=0
+noyoshi=1
+scripts=toady

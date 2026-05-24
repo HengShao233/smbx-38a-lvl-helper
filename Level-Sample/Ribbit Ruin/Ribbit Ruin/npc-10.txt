@@ -1,0 +1,5 @@
+gfxoffsetx=2
+score=0
+noblockcollision=0
+nogravity=0
+scripts=Wallet

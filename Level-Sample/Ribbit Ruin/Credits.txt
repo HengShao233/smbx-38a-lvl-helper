@@ -1,0 +1,25 @@
+Level made by HengShao
+
+GFX Credits:
+Mr. Pixelator - For Temple Ruins GFX
+Shikaternia - For Bubble GFX
+Victor ManuelMR - For Frog Mask GFX
+FireSeraphim - For SMW-Styled Toady GFX
+Silverbolt & Sly Guy - For SMW-Styled Wart GFX
+Kopejo - For Turnip GFX
+Squishy Rex - For SMW-Styled Kirby's Adventure Star Switches GFX
+Squishy Rex & SMWC - For Fixed Midday Clouds background GFX
+VannyArts - For Grassland background GFX from 'SMW - Farmland Tileset GFX'
+
+Script Credits:
+HengShao - For Bubble Mask, Switch Buttons, Bubble Platforms, Frogs script, and the edit of some scripts like Bubble Generator and Wart script, and some other small scripts contributing to this level's gimmick
+Marchtinal - For Bubble Generator script
+Slash-18 - For Toady and Wart script
+Xiaodou - For Wind Effect script
+Yvahnek - For Parallax Background script
+BirdyBuddyTwerpTwerp - For SMW Keyhole Effect script
+
+BGM Source:
+'Dragonspiral Tower' - From the game 'Pokémon Black & White', composed by Shota Kageyama, spc version ported by Unipat.
+'Battle' - From SMW hack 'Bowser Strikes Back', originally updated by Gamma V, ported by Jimmy.
+'Bird is Float - Mountain' - From the game 'Baba Is You', composed by Arvi Teikari, spc version ported by Fyre150.

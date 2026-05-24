@@ -1,0 +1,20 @@
+' =============================================================
+'  Custom Procedure Template
+'  用法：call myProc(args)
+'  注意：script 块必须放在脚本文件最末尾。
+'  ⚠ 38A 引擎实测 bug：代码语句后不要跟行尾注释。注释独占一行放前面。
+' =============================================================
+
+' 调用示例
+' 禁用跳跃
+call setJumps(-1)
+call sleep(60)
+' 恢复跳跃
+call setJumps(0)
+
+' 过程定义
+script setJumps(x as double)
+    sysval(disablejump)     = x
+    sysval(disablespinjump) = x
+end script
+

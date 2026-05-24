@@ -1,0 +1,16 @@
+' =============================================================
+'  Iterator Loop Template
+'  用 sysval(ncount) + for 简单遍历所有 NPC。
+'  对于大量对象的复杂查询，请改用 ItrCreate/ItrNext。
+'  ⚠ 38A 的 `next` 后不能跟变量名（不是 `next i`，是 `next`）。
+' =============================================================
+
+dim i as integer
+dim total as integer = sysval(ncount)
+
+for i = 1 to total
+    ' 例：把所有 Goomba 干掉
+    if NPC(i).id = 1 then
+        NPC(i).hp = 0
+    end if
+next

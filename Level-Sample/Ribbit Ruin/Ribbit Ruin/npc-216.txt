@@ -1,0 +1,7 @@
+gfxwidth=84
+gfxheight=104
+gfxoffsetx=0
+frames=1
+width=80
+height=94
+scripts=boss appear

@@ -1,0 +1,15 @@
+gfxwidth=32
+gfxheight=32
+gfxsplitheight=128
+frames=4
+width=32
+height=32
+playerblocktop=0
+npcblocktop=0
+jumphurt=1
+waterjumphurt=1
+spinjumphurt=1
+yoshihurt=1
+shoehurt=1
+nohurt=0
+scripts=switch spike ball

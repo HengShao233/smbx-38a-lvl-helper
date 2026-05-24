@@ -1,0 +1,2 @@
+npcblocktop=1
+stackable=1

@@ -1,0 +1,6 @@
+gfxwidth=42
+gfxheight=46
+gfxsplitheight=92
+frames=1
+height=44
+nonpccollision=1

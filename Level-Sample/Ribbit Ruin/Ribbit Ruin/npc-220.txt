@@ -1,0 +1,7 @@
+gfxwidth=2
+gfxheight=2
+frames=1
+zposition=0.1
+width=2
+height=2
+scripts=Particles

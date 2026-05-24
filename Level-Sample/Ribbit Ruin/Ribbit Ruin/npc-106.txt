@@ -1,0 +1,10 @@
+gfxwidth=64
+gfxheight=64
+gfxoffsety=7
+gfxsplitheight=192
+frames=3
+framespeed=6
+width=50
+height=50
+noyoshi=1
+scripts=##bubble platform

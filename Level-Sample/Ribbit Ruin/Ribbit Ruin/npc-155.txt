@@ -1,0 +1,4 @@
+noblockcollision=1
+grabside=0
+grabtop=0
+scripts=Breakable Block

@@ -1,0 +1,12 @@
+gfxoffsety=2
+gfxsplitheight=64
+playerblock=0
+playerblocktop=0
+nonpccollision=1
+grabside=0
+grabtop=0
+noyoshi=1
+health=2
+jumpdmg=1
+yoshitransform=-1
+scripts=button

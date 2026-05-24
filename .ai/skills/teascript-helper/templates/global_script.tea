@@ -1,0 +1,21 @@
+' =============================================================
+'  Global Script Template (.wls 中的 GS / GSu)
+'  跨关卡可见；用 export 暴露函数；建议只放 byte/integer dim
+'  （老版本 1.4.4 的 long/single/double 在全局有 bug；1.4.5 已修）。
+' =============================================================
+
+' 全局可调用的工具函数
+export script lerp(a as double, b as double, t as double, return double)
+    return a + (b - a) * t
+end script
+
+export script approach(cur as double, target as double, step as double, return double)
+    if cur < target then
+        cur = cur + step
+        if cur > target then cur = target
+    elseif cur > target then
+        cur = cur - step
+        if cur < target then cur = target
+    end if
+    return cur
+end script

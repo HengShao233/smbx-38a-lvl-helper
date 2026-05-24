@@ -1,0 +1,30 @@
+' =============================================================
+'  Event Script Template
+'  绑定到事件后，每次该事件触发时被调用。
+'  可通过 sysval(param1..3) 读取事件参数。
+' =============================================================
+
+' 1) 读取事件参数（按事件类型不同含义不同；见 autorun-events.md）
+dim p1 as integer = sysval(param1)
+dim p2 as integer = sysval(param2)
+dim p3 as integer = sysval(param3)
+
+' 2) 你的逻辑
+'    比如：触发了 NPC - Death，p1 是 NPC index
+if p1 > 0 then
+    ' NPC(p1).id, NPC(p1).x, NPC(p1).y ...
+    v(killedCount) = v(killedCount) + 1
+end if
+
+' 3) 触发其它事件 / 显示消息（可选）
+'    ⚠ TeaScript 没有"按名字触发自定义事件"的 API。SET()/SLT()/TMG() 是 IPC 命令，
+'       脚本内调用会编译失败。常见替代：
+'         - call LSet("LayerName", 1, 0)   ' 切图层显隐（事件链通过图层条件触发）
+'         - 在 lvl 的 E 行 ene 字段串接 nextevent
+if v(killedCount) >= 10 then
+    call LSet("RewardLayer", 1, 0)
+    v(killedCount) = 0
+end if
+
+' （函数 / 过程必须写在文件末尾）
+

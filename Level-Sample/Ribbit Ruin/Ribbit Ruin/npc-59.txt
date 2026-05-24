@@ -1,0 +1,9 @@
+gfxwidth=32
+gfxheight=66
+gfxoffsety=2
+frames=1
+width=32
+height=32
+gfxsplitheight=66
+noblockcollision=1
+scripts=Victory

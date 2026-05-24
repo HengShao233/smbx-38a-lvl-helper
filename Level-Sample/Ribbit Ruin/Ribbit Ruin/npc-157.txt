@@ -1,0 +1,9 @@
+gfxwidth=32
+gfxheight=32
+width=32
+height=32
+gfxsplitheight=32
+grabside=0
+grabtop=0
+immortal=1
+scripts=Switch Blocks

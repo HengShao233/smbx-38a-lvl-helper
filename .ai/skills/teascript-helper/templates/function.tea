@@ -1,0 +1,17 @@
+' =============================================================
+'  Custom Function Template
+'  用法：x = myFunc(args)
+'  注意：script 块必须放在脚本文件最末尾。
+' =============================================================
+
+' 调用示例
+dim r as double
+r = clamp(v(myVar), 0, 100)
+v(myVar) = r
+
+' 函数定义
+script clamp(x as double, lo as double, hi as double, return double)
+    if x < lo then return lo
+    if x > hi then return hi
+    return x
+end script
