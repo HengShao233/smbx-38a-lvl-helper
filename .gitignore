@@ -1,1 +1,4 @@
-.tools/skills/smbx-38a/scripts/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
