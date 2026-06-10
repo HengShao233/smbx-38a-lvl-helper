@@ -20,6 +20,6 @@
 
   - `smbx-38a` —— `.lvl/.wld/.wls` 解析/查询/编辑、TeaScript 脚本提取与回写、引擎 IPC 控制（重载/触发事件/查询状态）、窗口截图自检、SMBX/Editor 测试会话与进程管理。详见 [`.tools/skills/smbx-38a/SKILL.md`](.tools/skills/smbx-38a/SKILL.md)。
   - `teascript-helper` —— TeaScript 脚本开发助手：语法/函数速查、模板、静态 lint、嵌入到 lvl、绑定 Event→Script、一键回归（lint + inject + reload + trigger + screenshot + 让用户 review）。详见 [`.tools/skills/teascript-helper/SKILL.md`](.tools/skills/teascript-helper/SKILL.md)。
-  - `teascript-helper` —— TeaScript 脚本开发助手。详见 [`.tools/skills/teascript-helper/SKILL.md`](.tools/skills/teascript-helper/SKILL.md)。
+  - `tea-anim-helper` —— 基于 bmp/bitmap 的 tick 驱动型 TeaScript 动画设计与实现助手。详见 [`.tools/skills/tea-anim-helper/SKILL.md`](.tools/skills/tea-anim-helper/SKILL.md)。
 - `./AI-Example` - 存放 AI 构建的关卡成品的目录。
 - `./Level-Sample` - 存放作为示例的人工制作的关卡成品的目录，可作为 AI 构建关卡的参考。

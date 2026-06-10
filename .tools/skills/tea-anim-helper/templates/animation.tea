@@ -1,0 +1,109 @@
+' =============================================================
+'  Animation: MyAnim
+'  ----------------------------------------------------------
+'  创作意图: <一句话描述这段动画要表达什么>
+'  呈现效果: <分阶段/分镜的详细效果描述>
+'  对标/风格: <参考动画 / 风格关键词>
+'
+'  接口契约 (tick 驱动, 内部禁止 call sleep; do/loop/for 可用于批量建 bmp):
+'    MyAnim_Launch(BmpIdOffset As Long, Return Integer)  申请 bmp 资源
+'    MyAnim_Tick(TimeStamp As Long, Return Integer)      按帧驱动
+'    MyAnim_Finish(Return Integer)                       释放 bmp 资源
+'    MyAnim_Length(Return Long)                          动画总长(帧)
+'
+'  依赖: Lib_Bmp (bmp_utils), Lib_Curver (cumath_utils)
+'        请在关卡早期 call exeScript(Lib_Bmp) / call exeScript(Lib_Curver) 导入
+'
+'  bmp 分配 (相对 BmpIdOffset):
+'    +0 : 全屏遮罩  npc-1(0,0,128,128)
+'
+'  示例需求: bmp-2&npc-1(0,0,128,128): 缩放为刚好覆盖整个屏幕, 在 0~1s 内透明度从 0 变为 1.
+' =============================================================
+
+' ===================================== 调参区 (供人工微调, 无外部依赖)
+Dim MyAnim_len As Long = 60           ' 动画总长(帧); 60fps => 60 帧 = 1s
+Dim MyAnim_bmpCnt As Long = 1         ' 本动画占用的 bmp 数量
+
+' 截取区域 (从 npc-1 裁剪 128x128); 调参用, 改素材改这里
+Dim MyAnim_srcId As Long = 1
+Dim MyAnim_srcX As Long = 0
+Dim MyAnim_srcY As Long = 0
+Dim MyAnim_srcW As Long = 128
+Dim MyAnim_srcH As Long = 128
+
+' ===================================== 内部状态 (请勿手改)
+Dim MyAnim_offset As Long = 0         ' 缓存 BmpIdOffset
+Dim MyAnim_inited As Long = 0         ' 0 未初始化 / 1 已初始化
+
+' ===================================== 临时变量 (统一头部 dim, temp_ 前缀)
+Dim temp_t As Double = 0
+Dim temp_sx As Double = 0
+Dim temp_sy As Double = 0
+Dim temp_i As Long = 0
+
+' ===================================== 接口: 动画长度
+Export Script MyAnim_Length(Return Long)
+    Return MyAnim_len
+End Script
+
+' ===================================== 接口: 初始化 (申请 bmp)
+Export Script MyAnim_Launch(BmpIdOffset As Long, Return Integer)
+    ' 幂等: 已初始化则短路
+    If MyAnim_inited <> 0 Then
+        Return 0
+    End If
+    MyAnim_offset = BmpIdOffset
+
+    ' +0: 全屏遮罩
+    Call BmpNewStoreIsUseScreenCoords(1)
+    Call BmpNewStorePos(-10000, -10000)
+    Call BmpNewStoreScale(1, 1)
+    Call BmpNewStoreSrc(MyAnim_srcId, MyAnim_srcX, MyAnim_srcY, MyAnim_srcW, MyAnim_srcH)
+    Call BmpNew(BmpIdOffset + 0)
+    Bitmap(BmpIdOffset + 0).zpos = 0.001
+
+    MyAnim_inited = 1
+    Return 0
+End Script
+
+' ===================================== 接口: 驱动 (按帧)
+Export Script MyAnim_Tick(TimeStamp As Long, Return Integer)
+    ' 自动初始化: 未 Launch 过则以 offset 0 自动 Launch
+    If MyAnim_inited = 0 Then
+        Call MyAnim_Launch(0)
+    End If
+
+    ' clamp 到 [0, len]
+    If TimeStamp < 0 Then
+        TimeStamp = 0
+    ElseIf TimeStamp > MyAnim_len Then
+        TimeStamp = MyAnim_len
+    End If
+
+    ' 归一化时间 t -> [0, 1]
+    Call CUTimeSetStamp(0, MyAnim_len)
+    temp_t = CUTimeCalcT(TimeStamp)
+
+    ' ---- 缩放: 刚好覆盖整个屏幕 (800x600), 锚点居中 ----
+    Call BmpStoreAnchor(0.5, 0.5)
+    Call BmpPos(MyAnim_offset + 0, 400, 300)
+    temp_sx = 800.0 / MyAnim_srcW
+    temp_sy = 600.0 / MyAnim_srcH
+    Call BmpScale(MyAnim_offset + 0, temp_sx, temp_sy)
+
+    ' ---- 透明度: 0~len 内 0 -> 1 ----
+    Call BmpAlpha(MyAnim_offset + 0, temp_t)
+
+    Return 0
+End Script
+
+' ===================================== 接口: 结束 (释放 bmp)
+Export Script MyAnim_Finish(Return Integer)
+    If MyAnim_inited <> 0 Then
+        For temp_i = 0 To MyAnim_bmpCnt - 1 Step 1
+            Call BmpDel(MyAnim_offset + temp_i)
+        Next
+        MyAnim_inited = 0
+    End If
+    Return 0
+End Script

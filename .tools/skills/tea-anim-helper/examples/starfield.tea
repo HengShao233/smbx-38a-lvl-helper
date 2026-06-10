@@ -1,0 +1,125 @@
+' =============================================================
+'  Animation: Starfield
+'  ----------------------------------------------------------
+'  创作意图: 一片缓缓下落、明暗闪烁的星空, 用作过场/标题底衬
+'  呈现效果: 24 颗星随机分布, 持续向下漂移并循环回顶; 每颗星独立闪烁;
+'            整段前 10% 淡入、后 10% 淡出
+'  对标/风格: 复古像素星空
+'
+'  接口契约 (tick 驱动, 内部禁止 call sleep; do/loop/for 可用于批量建 bmp):
+'    Starfield_Launch(BmpIdOffset As Long, Return Integer)
+'    Starfield_Tick(TimeStamp As Double, Return Integer)
+'    Starfield_Finish(Return Integer)
+'    Starfield_Length(Return Double)
+'
+'  依赖: Lib_Bmp (bmp_utils), Lib_Curver (cumath_utils)
+'        请在关卡早期 call exeScript(Lib_Bmp) / call exeScript(Lib_Curver)
+'
+'  bmp 分配 (相对 BmpIdOffset):
+'    +0 .. +(bmpCnt-1) : 星星 npc-1(0,0,8,8)
+'
+'  ★ 本例演示: 动画内用 do-loop 批量创建一组 bmp (允许), 但全程不 call sleep
+' =============================================================
+
+' ===================================== 调参区 (供人工微调)
+Dim Starfield_len As Double = 640      ' 总长(帧); 640 帧 = 10s (@64fps)
+Dim Starfield_bmpCnt As Long = 24      ' 星星数量
+
+Dim Starfield_srcId As Long = 1        ' 星星贴图资产
+Dim Starfield_srcX As Long = 0
+Dim Starfield_srcY As Long = 0
+Dim Starfield_srcW As Long = 8
+Dim Starfield_srcH As Long = 8
+Dim Starfield_speed As Double = 0.15   ' 下落速度系数, 调大下落更快
+
+' ===================================== 内部状态 (请勿手改)
+Dim Starfield_offset As Long = 0
+Dim Starfield_inited As Long = 0
+
+' ===================================== 临时变量 (temp_ 前缀)
+Dim temp_t As Double = 0
+Dim temp_x As Double = 0
+Dim temp_y As Double = 0
+Dim temp_a As Double = 0
+Dim temp_s As Double = 0
+Dim temp_i As Long = 0
+
+' ===================================== 接口: 动画长度
+Export Script Starfield_Length(Return Double)
+    Return Starfield_len
+End Script
+
+' ===================================== 接口: 初始化 (do-loop 批量建 bmp)
+Export Script Starfield_Launch(BmpIdOffset As Long, Return Integer)
+    If Starfield_inited <> 0 Then
+        Return 0
+    End If
+    Starfield_offset = BmpIdOffset
+
+    Call BmpNewStoreIsUseScreenCoords(1)
+
+    ' do-loop 批量创建 (有限循环: 用 Exit Do 退出; 动画内绝不 call sleep)
+    temp_i = 0
+    Do
+        Call BmpNewStorePos(-10000, -10000)
+        Call BmpNewStoreScale(1, 1)
+        Call BmpNewStoreSrc(Starfield_srcId, Starfield_srcX, Starfield_srcY, Starfield_srcW, Starfield_srcH)
+        Call BmpNew(BmpIdOffset + temp_i)
+        Bitmap(BmpIdOffset + temp_i).zpos = 0.08
+        temp_i = temp_i + 1
+        If temp_i >= Starfield_bmpCnt Then
+            Exit Do
+        End If
+    Loop
+
+    Starfield_inited = 1
+    Return 0
+End Script
+
+' ===================================== 接口: 驱动 (按帧)
+Export Script Starfield_Tick(TimeStamp As Double, Return Integer)
+    If Starfield_inited = 0 Then
+        Call Starfield_Launch(0)
+    End If
+
+    If TimeStamp < 0 Then
+        TimeStamp = 0
+    ElseIf TimeStamp > Starfield_len Then
+        TimeStamp = Starfield_len
+    End If
+
+    Call CUTimeSetStamp(0, Starfield_len)
+    temp_t = CUTimeCalcT(TimeStamp)
+
+    ' 整体淡入(前 10%) + 淡出(后 10%)
+    temp_s = CUMath_Clamp01(CUMath_Remap01(0, 0.1, temp_t)) * CUMath_Clamp01(CUMath_Remap01(1, 0.9, temp_t))
+
+    ' 遍历每颗星: hash 稳定分布(可复现), 随时间下落并循环回顶 + 闪烁 + 远近缩放
+    Call BmpStoreAnchor(0.5, 0.5)
+    For temp_i = 0 To Starfield_bmpCnt - 1 Step 1
+        temp_x = CUMath_Hash(temp_i * 131 + 7) * 800
+        temp_y = CUMath_Frac(CUMath_Hash(temp_i * 197 + 31) + TimeStamp * Starfield_speed * 0.01) * 600
+        Call BmpPos(Starfield_offset + temp_i, temp_x, temp_y)
+
+        ' 独立相位闪烁
+        temp_a = CUMath_Sin01(TimeStamp * 0.1 + temp_i)
+        Call BmpAlpha(Starfield_offset + temp_i, temp_a * temp_s)
+
+        ' 远近: hash 决定缩放
+        temp_a = CUMath_Lerp(0.5, 1.5, CUMath_Hash(temp_i * 53 + 5))
+        Call BmpScale(Starfield_offset + temp_i, temp_a, temp_a)
+    Next
+
+    Return 0
+End Script
+
+' ===================================== 接口: 结束 (释放 bmp)
+Export Script Starfield_Finish(Return Integer)
+    If Starfield_inited <> 0 Then
+        For temp_i = 0 To Starfield_bmpCnt - 1 Step 1
+            Call BmpDel(Starfield_offset + temp_i)
+        Next
+        Starfield_inited = 0
+    End If
+    Return 0
+End Script
