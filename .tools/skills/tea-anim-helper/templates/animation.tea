@@ -21,7 +21,7 @@
 ' =============================================================
 
 ' ===================================== 调参区 (供人工微调, 无外部依赖)
-Dim MyAnim_len As Long = 60           ' 动画总长(帧); 60fps => 60 帧 = 1s
+Dim MyAnim_len As Double = 64           ' 动画总长(帧); 64fps => 64 帧 = 1s
 Dim MyAnim_bmpCnt As Long = 1         ' 本动画占用的 bmp 数量
 
 ' 截取区域 (从 npc-1 裁剪 128x128); 调参用, 改素材改这里
@@ -67,7 +67,7 @@ Export Script MyAnim_Launch(BmpIdOffset As Long, Return Integer)
 End Script
 
 ' ===================================== 接口: 驱动 (按帧)
-Export Script MyAnim_Tick(TimeStamp As Long, Return Integer)
+Export Script MyAnim_Tick(TimeStamp As Double, Return Double)
     ' 自动初始化: 未 Launch 过则以 offset 0 自动 Launch
     If MyAnim_inited = 0 Then
         Call MyAnim_Launch(0)
